@@ -1,5 +1,5 @@
 plugins {
-    id("com.cheroliv.bakery") version "0.1.3"
+    id("com.cheroliv.bakery") version "0.1.4"
 }
 
 val officePath = System.getenv("OFFICE_PATH") ?: "/home/cheroliv/workspace/office"
