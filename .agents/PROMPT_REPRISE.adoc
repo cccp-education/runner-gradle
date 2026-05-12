@@ -1,48 +1,38 @@
-= PROMPT_REPRISE — Session 011 — Engine
+= PROMPT_REPRISE — Session 013 — Engine
 :toc:
 
 == Contexte de Reprise
 
-*Sessions 0→10 ont realise* :
-- 0-3 : Bootstrap, git init, ENG-1/2 (aggregateGraphs/verifyDagAcyclic), ENG-3/4 (provisionWorkspace/CLI)
-- 4 : B1 StdoutFormatter dans codebase-gradle/rag
-- 5 : ENG-5 openapi.yaml + apiSchema + ENG-6 chatbot.sh
-- 6 : ENG-7 Integration engine.sh + ENG-8 health.sh
-- 7 : L09 — Engine N3 consommateur, pas serveur (gravee gouvernance)
-- 8 : augmentOpencode — derniere tache cible (placeholder, pret EPIC 9)
-- 9 : L10 — Compilation AVANT chaque commit (gravee gouvernance) + fix augmentOpencode
-- 10 : A3 CI/CD — Template .github/workflows/test.yml deploye sur 3 projets (quizz-benchmark, graphify-gradle, payment-scaffold)
+*Sessions 0→12 ont realise* :
+- 0-11 : Bootstrap, git init, ENG-1→9, L09/L10, CI/CD
+- EPIC B : Engine Clean — verifyDagAcyclic → graphify-gradle, aggregateGraphs/augmentOpencode supprimes
+- 12 : Code Review Globale — Règle « terminal consommateur, zéro test » persistée dans AGENT.adoc
 
-== Contrat Engine — 4 taches cibles TERMINEES
+== Contrat Engine — 4 taches cibles
 
 |===
-| Tache | Session | Statut
-| `aggregateGraphs` | 2 | ✅
-| `verifyDagAcyclic` | 2 | ✅
-| `provisionWorkspace` | 3 | ✅
-| `augmentOpencode` | 8 | ✅ (placeholder -> /tmp/opencode-context.txt, actif reel quand EPIC 9 pret)
+| Tache | Statut
+| `info` | ✅
+| `provisionWorkspace` | ✅
+| `apiSchema` | ✅
+| `usage` | ✅
 |===
 
-== Artefacts CI/CD deployes
-
+== Taches supprimees / migrees
 |===
-| Projet | Workflow | Run
-| quizz-benchmark | ✅ | 1m14s
-| graphify-gradle | ✅ | 57s
-| payment-scaffold | ✅ | 1m44s
+| `verifyDagAcyclic` | → graphify-gradle (N0, GF-3)
+| `aggregateGraphs` | → supprime (redondant)
+| `augmentOpencode` | → supprime (codebase-gradle US-9.12)
+| `assembleCompositeContext` | → a migrer dans codex-gradle (N2)
 |===
 
-== Regles ajoutees cette session
+== Cible post-migration : engine = ~150 lignes / 4 taches
 
-. Regle 6 — Pas de taches hors contrat sans validation (L09)
-. Regle 7 — Compilation AVANT commit (L10)
+== Prochaine etape — Session 013
 
-== Prochaine etape — Session 011
-
-Le contrat engine est termine. Trois directions possibles :
-* Pivot codebase-gradle — EPIC 9 US-9.10 CompositeContextBuilder (debloque augmentOpencode reel)
-* Deploiement CI/CD additionnel — codebase-gradle, plantuml-gradle, slider-gradle, bakery-gradle, readme-gradle, training-gradle
-* Cleanup engine — revoir les artefacts hors contrat (openapi.yaml, apiSchema, chatbot.sh)
+* Cleanup build.gradle.kts (479→150 lignes)
+* Ajouter mavenCentral() dans settings.gradle.kts pluginManagement
+* Uniformiser jvmToolchain(24)
 
 [.text-right]
-*Session 2026-05-11 (010) — generee par la procedure de fin de session 010.*
+*Session 2026-05-12 (012) — Code Review Globale + gouvernance.*

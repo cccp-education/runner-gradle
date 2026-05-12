@@ -77,3 +77,4 @@
 | ENG-0
 | — Bootstrap gouvernance agent engine
 |===
+| 012 | 2026-05-12 | governance | Code Review Globale + règle terminal consommateur | 10/10

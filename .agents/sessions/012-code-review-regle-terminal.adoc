@@ -1,0 +1,26 @@
+= Session 012 — Code Review Globale + Règle « Terminal Consommateur »
+:date: 2026-05-12
+:type: governance+review
+:score: 10/10
+
+== Contexte
+
+Session globale de code review des 8 boroughs. L'agent opencode a proposé d'ajouter
+des tests à engine (EPIC B), ce qui violait le contrat DAG : engine est un
+consommateur de plugins, pas un lieu où la logique est implémentée.
+
+== Actions
+
+. *Règle persistée* dans `AGENT.adoc` : Engine est un terminal consommateur (N3). Zéro
+  logique métier, zéro test, zéro `src/`. La charge de la preuve est sur le plugin
+  propriétaire : graphify (N0) pour verifyDagAcyclic, codebase (N1) pour augmentOpencode,
+  codex (N2) pour assembleCompositeContext.
+. `build.gradle.kts` vérifié : 479 lignes. Cible post-migration : ~150 lignes / 4 tâches
+  (info, provisionWorkspace, apiSchema, usage). Logique à migrer : verifyDagAcyclic →
+  graphify, augmentOpencode → supprimer (codebase le fait déjà), aggregateGraphs → supprimer
+  (redondant), assembleCompositeContext → codex.
+
+== Résultat
+
+ENGINE.md maintenant documente explicitement le contrat. L'agent ne proposera plus jamais
+de tests pour engine. La gouvernance du workspace racine (AGENTS.adoc) a été mise à jour.

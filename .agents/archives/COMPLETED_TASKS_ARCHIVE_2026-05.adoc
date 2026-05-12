@@ -127,6 +127,13 @@
 |===
 
 '''
+== Session 012 — 2026-05-12
+
+|===
+| EPIC | Tache | Statut
+| — | `Code Review Globale` + règle terminal consommateur | ✅ AGENT.adoc mis à jour, ENGINE.md documente le contrat. Agent ne proposera plus jamais de tests pour engine.
+|===
+
 == Session 011 — 2026-05-12
 
 |===

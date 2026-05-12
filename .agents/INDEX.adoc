@@ -6,8 +6,8 @@ _Ontologie spatiale_ : voir `configuration/.agents/AGENT_GOVERNANCE.adoc`
 _DAG_ : N3 — Orchestration (Regle 4bis)
 
 _Derniere mise a jour_ : 2026-05-12
-_Session terminee_ : 11 — EPIC B Engine Clean (3 pts, 3 US) TERMINE
-_Session en cours_ : 12 — (a definir)
+_Session terminee_ : 012 — Code Review Globale + règle terminal consommateur
+_Session en cours_ : 013 — (a definir)
 _Session precedente_ : 011 ✅ — EPIC B Engine Clean (3 pts, 3 US)
 
 '''
