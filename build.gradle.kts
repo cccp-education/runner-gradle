@@ -98,7 +98,7 @@ val pluginRepos = mapOf(
     "notebook-gradle" to "notebook-gradle",
     "newpipe-gradle" to "newpipe-gradle",
     "saas-deploy-gradle" to "saas-deploy-gradle",
-    "magic_stick" to "magic_stick",
+    "magic-stick" to "magic-stick",
     "engine" to "engine"
 )
 
