@@ -3,7 +3,6 @@ import java.io.File
 
 plugins {
     id("com.cheroliv.bakery") version "0.1.4"
-    id("com.cheroliv.graphify") version "0.0.1"
 }
 
 val officePath: String = System.getenv("OFFICE_PATH") ?: "/home/cheroliv/workspace/office"
@@ -13,48 +12,6 @@ val siteName: String = project.findProperty("siteName") as? String ?: "cheroliv.
 
 bakery {
     configPath.set(file("$officePath/sites/$siteName/site.yml").path)
-}
-
-graphify {
-    rootDir.set(file("/home/cheroliv/workspace"))
-    outputFile.set(file("$officePath/graph.json"))
-    excludePatterns.set(
-        excludePatterns.get() + listOf(
-            "**/runtimes/**",
-            "**/tmp/**",
-            "**/cache/**",
-            "**/snap/**",
-            "**/downloads/**",
-            "**/bin/**",
-            "**/lib/**",
-            "**/share/**",
-            "**/.cache/**",
-            "**/pilotage/**"
-        )
-    )
-    dagLevels.set(mapOf(
-        "graphify-gradle" to 0,
-        "codebase-gradle" to 1,
-        "bakery-gradle" to 2,
-        "codex-gradle" to 2,
-        "magic-stick" to 2,
-        "planner-gradle" to 2,
-        "plantuml-gradle" to 2,
-        "quizz-benchmark-gradle" to 2,
-        "quizz-benchmark-plugin" to 2,
-        "readme-gradle" to 2,
-        "slider-gradle" to 2,
-        "training-gradle" to 2,
-        "engine" to 3,
-        "waiter-plugin" to 2,
-        "office-template" to 2,
-        "jhipster-gradle-plugins" to 2,
-        "notebook-gradle" to 2,
-        "newpipe-gradle" to 2,
-        "saas-deploy-gradle" to 2,
-        "scripts" to 2,
-        "site" to 2
-    ))
 }
 
 val dagLevels = mapOf(
