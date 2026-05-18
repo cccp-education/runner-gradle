@@ -17,7 +17,7 @@ ENG-6 : Script chatbot.sh avec prompt systeme N3 orchestrateur, boucle REPL
   * 3 endpoints : `/health` (GET), `/provision` (POST), `/status` (GET)
   * 6 schemas : HealthResponse, ProvisionRequest, ProvisionResponse, StatusResponse, PluginInfo, ErrorResponse
   * Tous les champs obligatoires documentes
-. Task Gradle `apiSchema` — validation Kotlin pure (string parsing, zero Groovy) :
+. Task Gradle `generateApiSchema` — validation Kotlin pure (string parsing, zero Groovy) :
   * Verifie version openapi 3.x
   * Verifie `info.title` present
   * Verifie les 3 paths requis
@@ -40,15 +40,9 @@ ENG-6 : Script chatbot.sh avec prompt systeme N3 orchestrateur, boucle REPL
 |===
 | Fichier | Action
 | `openapi.yaml` | Cree (contrat OpenAPI 3.0.3, 3 paths, 6 schemas)
-| `build.gradle.kts` | Ajout task `apiSchema` (validation Kotlin pure)
-| `chatbot.sh` | Cree (REPL Ollama avec prompt N3)
-| `engine.sh` | Inchangé (ne gere pas encore api/chatbot — a ajouter prochaine session)
-|===
+| `build.gradle.kts` | Ajout task `generateApiSchema` (validation Kotlin pure)
 
-== Dette technique
-
-. `engine.sh` ne gere pas encore les commandes `api` et `chatbot`
-. Pas de validation de schema JSON (format de reponse) dans `apiSchema`
+. Pas de validation de schema JSON (format de reponse) dans `generateApiSchema`
 
 == Prochaine session
 

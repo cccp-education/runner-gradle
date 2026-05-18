@@ -73,9 +73,9 @@
 | EPIC | Tache | Statut
 
 | ENG-5
-| `Interface API` — openapi.yaml + apiSchema
-| ✅ openapi.yaml (3 paths, 6 schemas) + `./gradlew apiSchema` BUILD SUCCESSFUL
+| `Interface API` — openapi.yaml + generateApiSchema
 
+| ✅ openapi.yaml (3 paths, 6 schemas) + `./gradlew generateApiSchema` BUILD SUCCESSFUL
 | ENG-6
 | `Chatbot CI/CD` — chatbot.sh REPL
 | ✅ chatbot.sh (prompt N3 francais, /exit /reset) + chmod +x
@@ -99,9 +99,9 @@
 | EPIC | Tache | Statut
 
 | ENG-3
-| `provisionWorkspace` — Generation provision.sh pour bootstrap workspace
-| ✅ `./gradlew provisionWorkspace` → provision.sh (88 lignes, 14 repos N0→N3)
+| `deployWorkspace` — Generation provision.sh pour bootstrap workspace
 
+| ✅ `./gradlew deployWorkspace` → provision.sh (88 lignes, 14 repos N0→N3)
 | ENG-4
 | `Interface CLI` — Wrapper engine.sh + commandes info/usage
 | ✅ `./engine.sh info` / `./engine.sh usage` / `./engine.sh provision`
@@ -123,7 +123,7 @@
 
 | N/A
 | Bootstrap graphify-gradle (N0)
-| ✅ Plugin `com.cheroliv.graphify:0.0.1` dans mavenLocal
+| ✅ Plugin `cccp.education.graphify:0.0.1` dans mavenLocal
 |===
 
 '''
@@ -162,7 +162,7 @@
 | ✅ buildscript jackson-module-kotlin:2.18.3, readValue au lieu de JsonSlurper, writerWithDefaultPrettyPrinter au lieu de JsonOutput
 
 | N3
-| `Capsule integration` — Integration capsule-gradle N2 dans assembleCompositeContext
+| `Capsule integration` — Integration capsule-gradle N2 dans collectCompositeContext
 | ✅ capsuleEntries[], capsuleDir, capsuleretrieve via ProcessBuilder, dagLevels + pluginRepos mis à jour
 |===
 
@@ -195,4 +195,20 @@
 | N/A
 | `Correction` — Workspace PROMPT_REPRISE.adoc désynchronisé (session 012 référencée comme "à faire")
 | ✅ corrigé avec session 013
+|===
+
+'''
+== Session 016 — 2026-05-18
+
+|===
+| EPIC | Tache | Statut
+
+| K-04
+| `verifyBoroughs` — Validation arborescence 11 boroughs (dir, AGENT.adoc, .agents/INDEX.adoc, metadata.json, extension DSL, inference filesystem)
+
+| ✅ findExtensionRegistration() integree dans verifyBoroughs. Detection auto namespace.
+
+| N/A
+| `Deplacement physique` — waiter-gradle et workspace-gradle → foundry/private/
+| ✅ BoroughDef.dirPath mis a jour + DAG registry preserve.
 |===

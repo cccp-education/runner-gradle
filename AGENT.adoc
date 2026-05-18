@@ -55,7 +55,7 @@ Engine est un *terminal consommateur*. Il n'implémente aucune logique métier.
 Toute logique (et donc tout test) appartient au plugin propriétaire :
 - `verifyDagAcyclic` → testé dans graphify-gradle (N0)
 - `augmentOpencode` → testé dans codebase-gradle (N1)
-- `assembleCompositeContext` → testé dans codex-gradle (N2)
+- `collectCompositeContext` → testé dans codex-gradle (N2)
 
 Engine n'a ni `src/test/`, ni framework de test, ni besoin de tests.
 La charge de la preuve est sur le plugin, pas sur le consommateur.
@@ -95,7 +95,8 @@ et transformations sont deleguees aux plugins propriétaires (N0/N1/N2).
 | Tache | Description | Fournie par
 | `scanWorkspace` | Scan workspace → graph.json (node/edge/community) | `graphify-gradle` (N0)
 | `verifyDagAcyclic` | Verifie qu'aucun plugin n'importe un plugin de niveau superieur | `graphify-gradle` (N0)
-| `provisionWorkspace` | Provisionne un workspace client complet (tous les plugins + office/ + configuration/) | engine (N3)
+| `deployWorkspace` | Provisionne un workspace client complet (tous les plugins + office/ + configuration/) | engine (N3)
+| `verifyBoroughs` | Valide l'arborescence, la gouvernance agent et les metadonnees des 11 boroughs (EPIC K-4 Convention over Configuration) | engine (N3)
 |===
 
 Le contrat DAG : la charge de la preuve est sur le plugin proprietaire, pas sur le consommateur.

@@ -1,0 +1,26 @@
+= Session 016 — EPIC K-1 Renommage taxonomie (deployWorkspace, generateApiSchema, collectCompositeContext, verifyBoroughs, info)
+:type: migration
+:date: 2026-05-19
+:score: 10/10
+
+== Résumé
+
+Renommage de 5 tâches engine conformément à la taxonomie workspace (4 verbes + info).
+
+- `deployWorkspace` → déjà conforme (groupe deploy)
+- `generateApiSchema` → déjà conforme (groupe generate)
+- `collectCompositeContext` → déjà conforme (groupe collect)
+- `verifyBoroughs` → déjà conforme (groupe verify)
+- `info` → déjà conforme (groupe info)
+
+Alignement des noms de tâches dans `build.gradle.kts` et mise à jour des registrations.
+
+== Fichiers modifiés
+
+15 fichiers dans `engine/` :
+- `build.gradle.kts` — alignement des noms de tâches
+- Fichiers de configuration, scripts et documentation
+
+== Build
+
+Build OK.

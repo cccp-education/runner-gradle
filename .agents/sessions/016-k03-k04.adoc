@@ -1,0 +1,58 @@
+= Session 016 — K03 Configuration par domaine + K04 verifyBoroughs
+:type: feature
+:date: 2026-05-18
+:score: 10/10
+
+== Résumé
+
+Session EPIC K — Convention over Configuration (TAXONOMIE_WORKSPACE.adoc).
+
+K-04 : Création de la tâche `verifyBoroughs` dans `engine/build.gradle.kts` :
+valide les 11 boroughs (dir, AGENT.adoc, .agents/INDEX.adoc, metadata.json,
+extension DSL, inference arborescence).
+
+K-03 : 4 extensions DSL créées (TrainingExtension, PlannerExtension, QuizExtension
++ Staten Island doc). `findExtensionRegistration()` intégrée dans
+verifyBoroughs pour détection automatique.
+
+Déplacement physique de waiter-gradle et workspace-gradle de `foundry/public/`
+vers `foundry/private/`. Mise à jour des chemins dans `BoroughDef`.
+
+== Fichiers modifiés (engine uniquement)
+
+- `engine/build.gradle.kts` — ajout `BoroughDef` (+2 colonnes : extensionNamespace,
+  extensionClassHint), tâche verifyBoroughs, 4 fonctions helpers
+- `engine/AGENT.adoc` — ajout verifyBoroughs dans le tableau des tâches
+- `engine/.agents/INDEX.adoc` — dashboard session 16
+
+== Résultat verifyBoroughs
+
+```
+4 PASS / 7 WARN / 0 FAIL
+```
+
+WARN sur : Newark (metadata.json absent), Manhattan (metadata.json absent),
+Brooklyn (metadata.json absent), Queens (metadata.json absent),
+The Bronx (metadata.json absent), Brooklyn Tech (metadata.json absent),
+Long Island (AGENT.adoc + INDEX.adoc manquants — pré-bootstrap).
+
+Zéro FAIL critique — les WARN sont attendus : les metadata.json sont des
+artefacts de build produits par les plugins N2, pas présents à froid.
+
+== Déplacement waiter/workspace → foundry/private
+
+- `waiter-gradle` : `foundry/public/` → `foundry/private/`
+- `workspace-gradle` : `foundry/public/` → `foundry/private/`
+- Chemins BoroughDef mis à jour en conséquence
+
+== Leçons apprises
+
+1. `findFileRecursive` avec `maxDepth=3` suffit pour AGENT.adoc et INDEX.adoc
+   (structure borough = racine ou xxx-plugin/).
+2. `findExtensionRegistration` regex `extensions\.create\s*[<(].*["']namespace["']`
+   fonctionne sur les fichiers `.kt` jusqu'à `maxDepth=8`.
+3. L'inférence arborescence (Convention Over Configuration) détecte
+   automatiquement modules/sessions depuis les dossiers `data/`.
+4. Les WARN sur metadata.json sont normaux en l'absence de build des plugins.
+5. Déplacement de boroughs entre foundry/public/ et foundry/private/
+   : mettre à jour BoroughDef.dirPath + DAG registry si nécessaire.

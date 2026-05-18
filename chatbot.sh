@@ -7,7 +7,7 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 MODEL="${1:-deepseek-v4-pro:cloud}"
 GRAPH_FILE="${HOME:-/home/cheroliv}/workspace/office/graph.json"
 
-SYSTEM_PROMPT="Tu es l'orchestrateur N3 du workspace Engine. Ton rôle est de superviser l'écosystème des plugins Gradle (N0 à N2), de garantir le respect du DAG (Règle 4bis : aucun plugin n'importe un plugin de niveau supérieur), et d'orchestrer les pipelines transverses (aggregateGraphs, verifyDagAcyclic, provisionWorkspace, augmentOpencode).
+SYSTEM_PROMPT="Tu es l'orchestrateur N3 du workspace Engine. Ton rôle est de superviser l'écosystème des plugins Gradle (N0 à N2), de garantir le respect du DAG (Règle 4bis : aucun plugin n'importe un plugin de niveau supérieur), et d'orchestrer les pipelines transverses (aggregateGraphs, verifyDagAcyclic, deployWorkspace, augmentOpencode).
 
 Règles absolues :
 - Engine N3 importe N0/N1/N2, jamais l'inverse

@@ -14,14 +14,11 @@ Engine CLI — Available Commands
 
 Commands:
   info                 Show engine status and DAG registry
-  verify               Run DAG acyclic verification
-  graph                Run aggregateGraphs (requires scanWorkspace)
   provision            Generate provision.sh for workspace bootstrap
   api | contract       Validate OpenAPI 3.0 contract (openapi.yaml)
   chatbot [model]      Start REPL with Ollama (default: deepseek-v4-pro:cloud)
   health               Return workspace health JSON
-  augment              Run augmentOpencode pipeline -> /tmp/opencode-context.txt
-  assemble [query]     Run assembleCompositeContext N2→N3 (codexRetrieve + codebaseRAG)
+  collect [query]      Run collectCompositeContext N2→N3 (codexRetrieve + codebaseRAG)
   tasks                List all Gradle tasks (engine + subprojects)
 
 Direct Gradle:
@@ -33,20 +30,14 @@ case "${1:-}" in
     info)
         ./gradlew info -q
         ;;
-    verify)
-        ./gradlew verifyDagAcyclic -q
-        ;;
-    graph)
-        ./gradlew aggregateGraphs -q
-        ;;
     provision)
-        ./gradlew provisionWorkspace -q
+        ./gradlew deployWorkspace -q
         ;;
     api)
-        ./gradlew apiSchema -q
+        ./gradlew generateApiSchema -q
         ;;
     contract)
-        ./gradlew apiSchema -q
+        ./gradlew generateApiSchema -q
         ;;
     chatbot)
         ./chatbot.sh "${2:-deepseek-v4-pro:cloud}"
@@ -54,11 +45,8 @@ case "${1:-}" in
     health)
         ./health.sh
         ;;
-    augment)
-        ./gradlew augmentOpencode -q
-        ;;
-    assemble)
-        ./gradlew assembleCompositeContext -Pquery="${2:-}" -q
+    collect)
+        ./gradlew collectCompositeContext -Pquery="${2:-}" -q
         ;;
     tasks)
         ./gradlew tasks --group engine

@@ -11,7 +11,7 @@
 
 === Bootstrap graphify-gradle (N0)
 
-Pre-requis bloqueur pour ENG-1. Plugin `com.cheroliv.graphify:0.0.1` cree dans
+Pre-requis bloqueur pour ENG-1. Plugin `cccp.education.graphify:0.0.1` cree dans
 `foundry/OSS/graphify-gradle/graphify-plugin/`:
 
 * `GraphModel.kt` — data classes (GraphNode, GraphEdge, GraphCommunity)
@@ -26,7 +26,7 @@ Resultat: 21k nodes, 22k edges, 24 communautes → `office/graph.json`
 
 Tache `verifyDagAcyclic` implantee dans `engine/build.gradle.kts`:
 * Parcourt les 22 `build.gradle.kts` des projets `foundry/OSS/`
-* Extrait les plugins `com.cheroliv.*` importes
+* Extrait les plugins `cccp.education.*` importes
 * Verifie Regle 4bis: aucun projet n'importe un projet de niveau superieur
 * Resultat: DAG Acyclic OK, aucune violation
 
@@ -40,7 +40,7 @@ Tache `aggregateGraphs` implantee dans `engine/build.gradle.kts`:
 === Configuration engine
 
 * `settings.gradle.kts`: ajout `mavenLocal()` + `gradlePluginPortal()`
-* `build.gradle.kts`: application de `com.cheroliv.graphify:0.0.1`
+* `build.gradle.kts`: application de `cccp.education.graphify:0.0.1`
 * Nettoyage des TODO residuels
 
 == Fichiers modifies

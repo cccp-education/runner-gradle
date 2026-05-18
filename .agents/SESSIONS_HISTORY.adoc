@@ -4,7 +4,19 @@
 |===
 | Session | Date | Type | EPIC(s) | Score
 
+| 016
+| 2026-05-19
+| migration
+| EPIC K-1 Renommage taxonomie (deployWorkspace, generateApiSchema, collectCompositeContext, verifyBoroughs, info) — 15 fichiers, Build OK
+| 10/10
+
 | 015
+| 2026-05-18
+| feature
+| K03 Configuration par domaine (4 extensions) + K04 verifyBoroughs (4 PASS/7 WARN/0 FAIL, 11 boroughs)
+| 10/10
+
+| 014
 | 2026-05-18
 | cleanup
 | Nettoyage references saas-deploy-gradle du mapping DAG

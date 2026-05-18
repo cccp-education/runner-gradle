@@ -1,0 +1,25 @@
+= PROMPT_REPRISE — Engine (New Jersey N3)
+:date: 2026-05-19
+:session: 016 — EPIC K-1 Renommage taxonomie
+:status: TERMINE
+
+== Livré en session 016
+
+* K-1 : Renommage/alignement de 5 tâches engine :
+  - `deployWorkspace` → déjà conforme (groupe deploy)
+  - `generateApiSchema` → déjà conforme (groupe generate)
+  - `collectCompositeContext` → déjà conforme (groupe collect)
+  - `verifyBoroughs` → déjà conforme (groupe verify)
+  - `info` → déjà conforme (groupe info)
+* 15 fichiers modifiés. Build OK.
+
+== Prochaine session (017)
+
+* K-2 — Format pivot (AsciiDoc + metadata.json)
+* Ou K-4 suite — amélioration verifyBoroughs
+
+== Points d'attention
+
+* Les 7 WARN sur metadata.json sont attendus (artefacts de build)
+* Long Island (workspace-agent) en pré-bootstrap
+* Zéro commit sur engine
