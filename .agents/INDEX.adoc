@@ -5,9 +5,9 @@ _Regles absolues_ : voir `AGENT.adoc`
 _Ontologie spatiale_ : voir `configuration/.agents/AGENT_GOVERNANCE.adoc`
 _DAG_ : N3 — Orchestration (Regle 4bis)
 
-_Derniere mise a jour_ : 2026-05-19
-_Session terminee_ : 017 — Pipeline N0→N3 ABC: Wiring Graphify (N0) + Codebase (N1) dans collectCompositeContext ✅
-_Session en cours_ : 018 — Test reel collectCompositeContext + cross-borough planner
+_Derniere mise a jour_ : 2026-05-19 (EPIC K fermé, K-5 terminé)
+_Session terminee_ : 018 — EPIC K K-5 Documentation (EPIC K fermé, toutes phases terminées)
+_Session en cours_ : 019 — Test reel collectCompositeContext + cross-borough planner
 
 '''
 == REGLES ABSOLUES (resume)
@@ -17,6 +17,20 @@ _Session en cours_ : 018 — Test reel collectCompositeContext + cross-borough p
 === 3. SECRETS via configuration/ — jamais en dur dans build.gradle.kts
 === 4. DAG N3 — jamais importe par N0/N1/N2
 === 5. PROCEDURE DE FIN DE SESSION — 6 ETAPES OBLIGATOIRES
+
+'''
+== EPIC K — Taxonomie Workspace
+
+[cols="1,3,2,3", options="header"]
+|===
+| Phase | Livrable | Statut | Boroughs
+| K-0 | Document Jardin Secret — TAXONOMIE_WORKSPACE.adoc | ✅ 2026-05-18 | Workspace root
+| K-1 | Renommage 4 verbes (collectFrom*, generate*, deployTo*) | ✅ 2026-05-19 | Engine + tous N2
+| K-2 | Format pivot — metadataExpectedPath dans engine | ✅ 2026-05-19 | Engine (consommateur) + 4 producteurs
+| K-3 | Configuration par domaine — EngineExtension | ✅ 2026-05-18 | Engine
+| K-4 | Convention over configuration — verifyBoroughs | ✅ 2026-05-19 | Engine N3
+| K-5 | Documentation — MàJ INDEX.adoc boroughs | ✅ TERMINE (2026-05-19) | Gouvernance
+|===
 
 '''
 == Sessions

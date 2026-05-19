@@ -4,6 +4,12 @@
 |===
 | Session | Date | Type | EPIC(s) | Score
 
+| 018
+| 2026-05-19
+| doc
+| K-5 — INDEX.adoc synchronise taxonomie 4 verbes + metadata.json + convention over config. EPIC K ferme (K-0→K-5).
+| ✅
+
 | 017
 | 2026-05-19
 | feat
