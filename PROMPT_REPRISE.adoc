@@ -20,7 +20,11 @@ Runner = zero tache de pipeline. Juste `plugins {}` + `includeBuild()`.
 . `./gradlew info` — verifier Runner v1.0
 . `git status` — voir les fichiers modifies non commites
 . `./gradlew verifyBoroughs` — New Jersey PASS
-. Prochaine session : resolution version catalog (codex/training/codebase) ou EPIC T StdoutFormatter
+. Prochaine session : suite du menage build.gradle.kts
+  - verifyBoroughs (~280 lignes) → deleguer a workspace-gradle (N4) ou plugin gouvernance
+  - deployWorkspace (~40 lignes) → deleguer a workspace-gradle
+  - generateApiSchema (~40 lignes) → deleguer a workspace-gradle ou supprimer (mock SaaS)
+  - Objectif : build.gradle.kts < 200 lignes (plugins + dagLevels + info)
 
 == Fichiers touches (hors gouvernance)
 
