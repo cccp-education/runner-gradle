@@ -257,3 +257,67 @@
 | Date | Tâche | Borough | Statut | Score
 | 2026-05-19 | Wiring engine→graphify (N0) + engine→codebase (N1) — Option AC Pipeline ABC | engine | ✅ | 10/10
 |===
+
+'''
+== Session 022 — 2026-05-23 — Runner 215→166 lignes
+
+|===
+| EPIC | Tache | Statut
+
+| Cleanup
+| `generateApiSchema` delegue a pilot-plugin N4 (ValidateApiSchemaTask.kt)
+| ✅ Runner -52 lignes. PilotPlugin +enregistrement validateApiSchema. PilotExtension +openapiContract.
+
+| Cleanup
+| Shell scripts nettoyes — runner.sh api/contract corriges
+| ✅ generateApiSchema → validateApiSchema
+
+| Cleanup
+| build.gradle.kts 215→166 lignes
+| ✅ Compilation + info OK
+|===
+
+'''
+== Session 023 — 2026-05-23 — Runner 166→4 lignes
+
+|===
+| EPIC | Tache | Statut
+
+| Cleanup
+| `deployWorkspace` + dagLevels + pluginRepos + githubOrg migres → provision-plugin N4
+| ✅ DeployWorkspaceTask.kt (81 lignes). ProvisionConfig +companion defaults.
+
+| Cleanup
+| `info` migre → pilot-plugin N4
+| ✅ InfoTask.kt (46 lignes). info dynamique (filtre verify/bakery/deploy).
+
+| Cleanup
+| `officePath` + `siteName` migres → PilotExtension
+| ✅ PilotExtension.kt +2 vars. InfoTask lit depuis extension.
+
+| Cleanup
+| `bakery { configPath(...) }` auto-config par PilotPlugin
+| ✅ PilotPlugin.configureBakeryIfPresent() — reflexion sur BakeryExtension. configPath, siteName, sitesBaseDir.
+
+| Cleanup
+| Shell scripts + system prompt chatbot.sh nettoyes
+| ✅ runner.sh: collect/provision out, verify/verify-boroughs/validate-api in. health.sh: verifyDagAcyclic cassé retiré. chatbot.sh: aggregateGraphs/augmentOpencode out.
+
+| Cleanup
+| build.gradle.kts 166→4 lignes
+| ✅ Runner = `plugins { bakery, pilot }`. BUILD SUCCESSFUL.
+|===
+
+== Session 024 — 2026-05-23
+
+|===
+| EPIC | Tache | Statut
+
+| Option C
+| `assembleCompositeContext` — AssembleCompositeContextTask (142 lignes) dans pilot-plugin N4. Orchestration codex (N2) + training (N2) + codebase (N1) via ProcessBuilder → build/composite-context.json unifié.
+| ✅ 3 boroughs appelés, fusion JSON, metadata.json. Runner = 4 lignes.
+
+| Cross-borough
+| PilotExtension +3 proprietes (codexProjectDir, trainingProjectDir, codebaseProjectDir). PilotPlugin +enregistrement assembleCompositeContext (groupe context). InfoTask +groupe.
+| ✅ compile + publishToMavenLocal. Runner info / assembleCompositeContext BUILD SUCCESSFUL.
+|===

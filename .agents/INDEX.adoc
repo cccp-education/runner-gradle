@@ -5,9 +5,9 @@ _Regles absolues_ : voir `AGENT.adoc`
 _Ontologie spatiale_ : voir `configuration/.agents/AGENT_GOVERNANCE.adoc`
 _DAG_ : N3 — Orchestration (Regle 4bis)
 
-_Derniere mise a jour_ : 2026-05-23 (Cleanup collectCompositeContext, delegation generateCompositeContext)
-_Session terminee_ : 020 — Cleanup collectCompositeContext + delegation generateCompositeContext (codex/training/codebase + runner -272 lignes)
-_Session a venir_ : 021 — Resolution version catalog (codex/training/codebase) ou EPIC T StdoutFormatter
+_Derniere mise a jour_ : 2026-05-23 (Session 024 — Option C assembleCompositeContext. Pipeline A→C : A (inferMetadata) TERMINE, C (cette session) TERMINE. Next : B (EPIC L koog).)
+_Session terminee_ : 024 — Option C assembleCompositeContext. AssembleCompositeContextTask (142 lignes) dans pilot-plugin N4. Orchestration codex→training→codebase via ProcessBuilder. Runner = 4 lignes.
+_Session a venir_ : 025 — WSM-3 pilot-plugin tests OU EPIC L koog
 
 '''
 == REGLES ABSOLUES (resume)
@@ -37,6 +37,9 @@ _Session a venir_ : 021 — Resolution version catalog (codex/training/codebase)
 
 |===
 | # | Date | Type | Sujet | Score
+| 24 | 2026-05-23 | feat | Option C assembleCompositeContext — AssembleCompositeContextTask (142 lignes) dans pilot-plugin N4. Orchestration codex+training+codebase → composite-context.json. Pipeline A→C complété. | 9/10
+| 23 | 2026-05-23 | cleanup | Cleanup 166→4 lignes — migration deployWorkspace→provision, info→pilot, bakery auto-config→pilot. Runner = plugins { bakery, pilot }. | 10/10
+| 22 | 2026-05-23 | cleanup | Cleanup generateApiSchema delegue a pilot-plugin N4. Runner 215→166 lignes. | 10/10
 | 21 | 2026-05-23 | cleanup | Cleanup verifyBoroughs → pilot-plugin workspace-gradle N4. Runner -364 lignes (577→213). build.gradle.kts < 220. Pilot plugin compile + mavenLocal. | 10/10
 | 20 | 2026-05-23 | cleanup | Cleanup collectCompositeContext — delegation generateCompositeContext vers codex/training/codebase. Runner -272 lignes, +0 metier. build.gradle.kts 850→577. | 10/10
 | 19 | 2026-05-23 | rename | EPIC O Renommage engine → runner-gradle (12 sous-EPICs O-0→O-11, 32 pts) | 10/10

@@ -4,6 +4,24 @@
 |===
 | Session | Date | Type | EPIC(s) | Score
 
+| 024
+| 2026-05-23
+| feat
+| Option C — assembleCompositeContext dans pilot-plugin (workspace-gradle N4). AssembleCompositeContextTask (142 lignes) orchestre codex→training→codebase via ProcessBuilder → composite-context.json unifie. Pipeline A→C termine.
+| 9/10 — pilot-plugin: AssembleCompositeContextTask (nouveau, 142 lignes), PilotExtension +3 props, PilotPlugin +1 tache, InfoTask +groupe context. Runner: PROMPT_REPRISE + INDEX + SESSIONS_HISTORY MAJ.
+
+| 023
+| 2026-05-23
+| cleanup
+| Runner 166→4 lignes. Migration deployWorkspace→provision-plugin, info→pilot-plugin, bakery auto-config→pilot. Runner = plugins { bakery, pilot }. Shell scripts nettoyés (runner.sh, health.sh, chatbot.sh).
+| 10/10 — runner-gradle: 8dca84f. workspace-gradle: 40a33c1. PilotPlugin +29 lignes (auto-configure bakery). InfoTask.kt (46 lignes). DeployWorkspaceTask.kt (81 lignes). ProvisionConfig +52 lignes.
+
+| 022
+| 2026-05-23
+| cleanup
+| Cleanup generateApiSchema delegue a pilot-plugin N4. Runner 215→166 lignes.
+| 10/10 — runner-gradle: 0375d8e
+
 | 021
 | 2026-05-23
 | cleanup

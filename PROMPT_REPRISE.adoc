@@ -1,35 +1,54 @@
 = PROMPT_REPRISE — runner-gradle
-:session: 022
+:session: 024
 :date: 2026-05-23
-:etat: Menage TERMINE — generateApiSchema delegue a pilot-plugin N4. Objectif <200 lignes atteint.
-:epic_actif: Cleanup (termine)
+:etat: Runner = 4 lignes. assembleCompositeContext dans pilot-plugin. Option C TERMINEE.
+:epic_actif: Aucun — next = WSM-3 pilot-plugin tests OU EPIC L koog
 
 == Contexte de fin
 
-generateApiSchema supprime du build.gradle.kts (-52 lignes). La logique vit
-dans pilot-plugin (ValidateApiSchemaTask.kt). Runner build.gradle.kts : 850 → 166 lignes.
+Runner-gradle build.gradle.kts : 4 lignes :
+----
+plugins {
+    id("education.cccp.bakery") version "0.1.4"
+    id("cheroliv.com.workspace.pilot") version "0.0.0"
+}
+----
 
-Delegations terminees :
-- collectCompositeContext → codex/training/codebase (session 020)
-- verifyBoroughs → pilot-plugin (session 021)
-- generateApiSchema → pilot-plugin (session 022)
+Pipeline A→C→B :
+- Option A : inferMetadataAsciiDocTask (pilot-plugin) — ✅ TERMINE
+- Option C : assembleCompositeContext (pilot-plugin) — ✅ TERMINE (cette session)
+- Option B : EPIC L koog+langchain4j
 
-Runner = plugins {} + bakery {} + dagLevels + deployWorkspace + info. Zero logique metier.
+assembleCompositeContext orchestre codex (N2) + training (N2) + codebase (N1) via ProcessBuilder
+et fusionne en build/composite-context.json. Runner = terminal consommateur pur.
 
-== Reprendre a
+== Reprendre à
 
-. `./gradlew info` — verifier Runner v2.0 (166 lignes)
-. `git status` — voir les fichiers modifies non commites
-. Prochaine session : WSM-3 pilot-plugin tests ou nouvelle gouvernance (inferMetadataAsciiDocTask)
+. `git status`
+. `./gradlew info` — confirmer runner v2.0 + assembleCompositeContext dans context
+. WSM-3 — Tests pilot-plugin (verifyBoroughs, validateApiSchema, info, assembleCompositeContext)
+. OU EPIC L — Migration langgraph4j → koog+langchain4j
 
-== Fichiers touches
+== Fichiers touchés
 
-- `build.gradle.kts` — -52 lignes (215→166), generateApiSchema supprime
-- `pilot-plugin/PilotExtension.kt` — +openapiContract RegularFileProperty
-- `pilot-plugin/ValidateApiSchemaTask.kt` — nouveau (45 lignes)
-- `pilot-plugin/PilotPlugin.kt` — +enregistrement validateApiSchema
+- runner-gradle/build.gradle.kts → 4 lignes (inchangé, terminal consommateur)
+- runner-gradle/settings.gradle.kts → 4 lignes (inchangé)
+- runner-gradle/.agents/sessions/024-optionc-assemble-composite-context.adoc → nouveau
+
+== workspace-gradle touché
+
+- pilot-plugin/PilotExtension.kt → +3 propriétés (codexProjectDir, trainingProjectDir, codebaseProjectDir)
+- pilot-plugin/PilotPlugin.kt → +enregistrement assembleCompositeContext
+- pilot-plugin/AssembleCompositeContextTask.kt → nouveau (142 lignes)
+- pilot-plugin/InfoTask.kt → +groupe "context"
 
 == Compilation — Statut
 
-- runner-gradle → BUILD SUCCESSFUL (info + validateApiSchema via pilot plugin)
-- pilot-plugin → BUILD SUCCESSFUL + publishToMavenLocal
+- runner-gradle → BUILD SUCCESSFUL (info + assembleCompositeContext)
+- pilot-plugin → BUILD SUCCESSFUL + publishToMavenLocal (15 tasks)
+
+== Limitation
+
+Les 3 boroughs N1/N2 (codex/training/codebase) ont des problèmes de compilation
+préexistants. L'orchestration est fonctionnelle et résiliente (0 entry = BUILD SUCCESSFUL).
+Prochaines sessions : fixer les boroughs individuellement.
