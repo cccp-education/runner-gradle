@@ -5,9 +5,9 @@ _Regles absolues_ : voir `AGENT.adoc`
 _Ontologie spatiale_ : voir `configuration/.agents/AGENT_GOVERNANCE.adoc`
 _DAG_ : N3 — Orchestration (Regle 4bis)
 
-_Derniere mise a jour_ : 2026-05-23 (EPIC O fermé, engine → runner-gradle)
-_Session terminee_ : 019 — EPIC O Renommage engine → runner-gradle (12 sous-EPICs, 32 pts)
-_Session en cours_ : 020 — Cleanup collectCompositeContext ou EPIC T
+_Derniere mise a jour_ : 2026-05-23 (Cleanup collectCompositeContext, delegation generateCompositeContext)
+_Session terminee_ : 020 — Cleanup collectCompositeContext + delegation generateCompositeContext (codex/training/codebase + runner -272 lignes)
+_Session a venir_ : 021 — Resolution version catalog (codex/training/codebase) ou EPIC T StdoutFormatter
 
 '''
 == REGLES ABSOLUES (resume)
@@ -37,6 +37,8 @@ _Session en cours_ : 020 — Cleanup collectCompositeContext ou EPIC T
 
 |===
 | # | Date | Type | Sujet | Score
+| 20 | 2026-05-23 | cleanup | Cleanup collectCompositeContext — delegation generateCompositeContext vers codex/training/codebase. Runner -272 lignes, +0 metier. build.gradle.kts 850→577. | 10/10
+| 19 | 2026-05-23 | rename | EPIC O Renommage engine → runner-gradle (12 sous-EPICs O-0→O-11, 32 pts) | 10/10
 | 17 | 2026-05-19 | feat | Pipeline N0→N3 ABC — Phase 0 graphify scan (N0) + Phase 4 codebase pgvector RAG (N1). Hack augmentOpencode remplacé. | 10/10
 | 16 | 2026-05-19 | migration | EPIC K-1 Renommage taxonomie (5 tâches) | 10/10
 | 16 | 2026-05-18 | feature | K04 verifyBoroughs + K03 Configuration par domaine (4 extensions créées : training/planner/quiz + Staten Island site.yml) + déplacement waiter/workspace → foundry/private/ | 10/10

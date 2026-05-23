@@ -4,6 +4,12 @@
 |===
 | Session | Date | Type | EPIC(s) | Score
 
+| 020
+| 2026-05-23
+| cleanup
+| Cleanup collectCompositeContext — delegation generateCompositeContext vers codex/training/codebase. Runner -272 lignes, +0 metier. 850→577 lignes.
+| 10/10 — 3 nouvelles taches Kotlin (CodexCompositeContextTask, TrainingCompositeContextTask, CodebaseCompositeContextTask), Runner collectCompositeContext supprime, info MAJ
+
 | 019
 | 2026-05-23
 | rename

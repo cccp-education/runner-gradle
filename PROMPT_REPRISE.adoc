@@ -1,31 +1,43 @@
 = PROMPT_REPRISE — runner-gradle
 :session: 020
 :date: 2026-05-23
-:etat: EPIC O TERMINE — engine devient runner-gradle
-:epic_actif: N/A (EPIC O ferme)
+:etat: Cleanup collectCompositeContext TERMINE — zero logique metier dans runner
+:epic_actif: N/A
 
 == Contexte de fin
 
-EPIC O (12 sous-EPICs, 32 pts) termine. `engine` → `runner-gradle` :
-- Repertoire physique : `foundry/public/runner-gradle/`
-- settings.gradle.kts : `rootProject.name = "runner-gradle"`
-- Remote GitHub : `cheroliv/runner-gradle`
-- Scripts : `runner.sh`, `chatbot.sh`, `health.sh`
-- build.gradle.kts : logs `[runner]`, BoroughDef New Jersey → runner-gradle
-- AGENT.adoc : "Runner — Directives Agent"
+collectCompositeContext supprime de runner-gradle build.gradle.kts (-272 lignes).
+La logique est deleguee aux plugins proprietaires via `generateCompositeContext` :
+
+- codex-gradle (N2) → CodexVectorStore.searchBlocking()
+- training-gradle (N2) → ProcessBuilder codebase + AFNOR/REAC pgvector
+- codebase-gradle (N1) → CodexVectorStore + ProcessBuilder training
+
+Runner = zero tache de pipeline. Juste `plugins {}` + `includeBuild()`.
 
 == Reprendre à
 
-. `./gradlew info` — verifier "Runner v1.0"
+. `./gradlew info` — verifier Runner v1.0
 . `git status` — voir les fichiers modifies non commites
-. `./gradlew verifyBoroughs` — New Jersey PASS, ignorer Newark/The Bronx
-. Prochaine session : cleanup collectCompositeContext ou EPIC T
+. `./gradlew verifyBoroughs` — New Jersey PASS
+. Prochaine session : resolution version catalog (codex/training/codebase) ou EPIC T StdoutFormatter
 
 == Fichiers touches (hors gouvernance)
 
-- `build.gradle.kts` — logs `[runner]`, BoroughDef, dagLevels, outputDir
-- `settings.gradle.kts` — rootProject.name
-- `runner.sh` — CLI wrapper
-- `chatbot.sh` — REPL Runner N3
-- `health.sh` — /health mock
-- `openapi.yaml` — title/description/contact/url
+- `build.gradle.kts` — -272 lignes (850→577), collectCompositeContext supprime
+- `settings.gradle.kts` — includeBuild(codebase-gradle) ajoute
+- `codex-gradle/.../CodexCompositeContextTask.kt` — nouveau (45 lignes)
+- `codex-gradle/.../CodexPlugin.kt` — +1 tache enregistree
+- `training-gradle/.../TrainingCompositeContextTask.kt` — nouveau (130 lignes)
+- `training-gradle/.../TrainingGradlePlugin.kt` — +1 tache enregistree
+- `training-gradle/build.gradle.kts` — alias(libs.plugins.readme) commente (fix temporaire)
+- `training-gradle/settings.gradle.kts` — include(:training-plugin) ajoute
+- `codebase-gradle/.../CodebaseCompositeContextTask.kt` — nouveau (110 lignes)
+- `codebase-gradle/.../CodebasePlugin.kt` — +1 tache enregistree
+
+== Compilation — Statut croise
+
+- runner-gradle → ✅ BUILD SUCCESSFUL
+- codex-gradle → ⚠️ conflit annotations koog-agents (prexistant)
+- training-gradle → ⚠️ libs.plugins.readme non resolu (prexistant)
+- codebase-gradle → ⚠️ libs.plugins.publish non resolu (prexistant)

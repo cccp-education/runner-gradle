@@ -1,0 +1,72 @@
+= Session 020 — Cleanup collectCompositeContext + Délégation generateCompositeContext
+:date: 2026-05-23
+:epic: Cleanup
+:score: 10/10
+
+Suppression de la tâche `collectCompositeContext` (~272 lignes de logique métier)
+du build.gradle.kts de runner-gradle. La logique est déléguée aux plugins
+propriétaires via une nouvelle tâche `generateCompositeContext`.
+
+== Architecture cible
+
+[cols="1,3,3"]
+|===
+| Plugin | Tâche | Implémentation
+| codex-gradle (N2) | `generateCompositeContext` | `CodexVectorStore.searchBlocking()` → build/codex/composite-context.json
+| training-gradle (N2) | `generateCompositeContext` | ProcessBuilder codebase + pgvector AFNOR/REAC → build/training/composite-context.json
+| codebase-gradle (N1) | `generateCompositeContext` | CodexVectorStore + ProcessBuilder training → build/codebase/composite-context.json
+| runner-gradle (N3) | _(aucune)_ | Pure inscription `plugins {}` + `includeBuild()`
+|===
+
+== Chaîne d'appel
+
+----
+./gradlew generateCompositeContext → codebase-gradle (N1)
+  ├── CodexVectorStore (import doc-pipeline directement)
+  └── ProcessBuilder → training-gradle (N2)
+       ├── ProcessBuilder → codebase-gradle (appel récursif → codex)
+       └── pgvector AFNOR/REAC (onnx-local, training_datasets)
+→ build/codebase/composite-context.json
+----
+
+== Fichiers créés
+
+[cols="2,5"]
+|===
+| Fichier | Rôle
+| `codex-gradle/doc-pipeline/.../CodexCompositeContextTask.kt` | 45 lignes — appel CodexVectorStore, sérialisation JSON
+| `training-gradle/.../TrainingCompositeContextTask.kt` | 130 lignes — ProcessBuilder codebase + AFNOR/REAC pgvector
+| `codebase-gradle/.../CodebaseCompositeContextTask.kt` | 110 lignes — CodexVectorStore + ProcessBuilder training
+|===
+
+== Fichiers modifiés
+
+[cols="2,5"]
+|===
+| Fichier | Modification
+| `codex-gradle/.../CodexPlugin.kt` | +1 import, +1 bloc KDoc GENERATE, +1 enregistrement tâche
+| `training-gradle/.../TrainingGradlePlugin.kt` | +1 enregistrement generateCompositeContext
+| `codebase-gradle/.../CodebasePlugin.kt` | +1 import, +1 enregistrement generateCompositeContext
+| `runner-gradle/build.gradle.kts` | -272 lignes (collectCompositeContext supprimé), 850→577 lignes
+| `runner-gradle/settings.gradle.kts` | includeBuild("../codebase-gradle") ajouté
+|===
+
+== Runner — Résultat
+
+- `./gradlew info` → BUILD SUCCESSFUL ✅
+- `build.gradle.kts` : 577 lignes (850→577, -32%)
+- Zéro logique métier — juste `plugins {}`, `deployWorkspace`, `verifyBoroughs`, `verifyDagAcyclic`, `info`
+- `info` documente `generateCompositeContext` comme "Delegate au plugin codebase-gradle (N1)"
+
+== Compilation — Statut croisé
+
+- runner-gradle → ✅ BUILD SUCCESSFUL
+- codex-gradle → ⚠️ conflit annotations koog-agents/org.jetbrains (préexistant, non lié au code)
+- training-gradle → ⚠️ `libs.plugins.readme` / `libs.plugins.codebase` non résolus (préexistant)
+- codebase-gradle → ⚠️ `libs.plugins.publish` / `libs.plugins.kotlin.jvm` non résolus (préexistant)
+
+== Leçon
+
+Le contrat DAG dit "la charge de la preuve est sur le plugin propriétaire".
+Runner est un terminal consommateur. Même un ProcessBuilder dans build.gradle.kts
+est du métier. La seule chose que runner doit faire : `plugins {}` + `includeBuild()`.

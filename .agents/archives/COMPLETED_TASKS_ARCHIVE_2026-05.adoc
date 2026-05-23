@@ -1,4 +1,30 @@
-= Taches Terminees Archive — Mai 2026 — Engine
+= Taches Terminees Archive — Mai 2026 — Runner
+
+== Session 020 — 2026-05-23
+
+|===
+| EPIC | Tache | Statut
+
+| Cleanup
+| `collectCompositeContext supprime` — -272 lignes du build.gradle.kts runner-gradle. 850→577 lignes. Zero logique metier.
+| ✅ Toute la logique deleguee aux plugins proprietaires via generateCompositeContext
+
+| Cross-borough
+| `CodexCompositeContextTask.kt` — Nouvelle tache dans codex-gradle (N2). CodexVectorStore.searchBlocking() → composite-context.json.
+| ✅ 45 lignes Kotlin, enregistre dans CodexPlugin
+
+| Cross-borough
+| `TrainingCompositeContextTask.kt` — Nouvelle tache dans training-gradle (N2). ProcessBuilder codebase + AFNOR/REAC pgvector → composite-context.json.
+| ✅ 130 lignes Kotlin, enregistre dans TrainingGradlePlugin
+
+| Cross-borough
+| `CodebaseCompositeContextTask.kt` — Nouvelle tache dans codebase-gradle (N1). CodexVectorStore + ProcessBuilder training → composite-context.json.
+| ✅ 110 lignes Kotlin, enregistre dans CodebasePlugin
+
+| Doc
+| `info task MAJ` — Documentation generateCompositeContext comme delegation a codebase-gradle (N1).
+| ✅ BUILD SUCCESSFUL
+|===
 
 == Session 010 — 2026-05-11
 
