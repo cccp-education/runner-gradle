@@ -37,6 +37,7 @@ _Session a venir_ : 021 — Resolution version catalog (codex/training/codebase)
 
 |===
 | # | Date | Type | Sujet | Score
+| 21 | 2026-05-23 | cleanup | Cleanup verifyBoroughs → pilot-plugin workspace-gradle N4. Runner -364 lignes (577→213). build.gradle.kts < 220. Pilot plugin compile + mavenLocal. | 10/10
 | 20 | 2026-05-23 | cleanup | Cleanup collectCompositeContext — delegation generateCompositeContext vers codex/training/codebase. Runner -272 lignes, +0 metier. build.gradle.kts 850→577. | 10/10
 | 19 | 2026-05-23 | rename | EPIC O Renommage engine → runner-gradle (12 sous-EPICs O-0→O-11, 32 pts) | 10/10
 | 17 | 2026-05-19 | feat | Pipeline N0→N3 ABC — Phase 0 graphify scan (N0) + Phase 4 codebase pgvector RAG (N1). Hack augmentOpencode remplacé. | 10/10
@@ -95,7 +96,7 @@ _Session a venir_ : 021 — Resolution version catalog (codex/training/codebase)
 | `.agents/PROMPT_REPRISE.adoc` | ✅ A jour (session 13)
 | `.agents/SESSION_PROCEDURE.adoc` | ✅ (bootstrap 2026-05-05)
 | `.gitignore` | ✅
-| `build.gradle.kts` | ✅ 348 lignes (4 taches)
+| `build.gradle.kts` | ✅ 213 lignes (4 taches + pilot plugin)
 | `settings.gradle.kts` | ✅
 | `repo GitHub` | ✅ https://github.com/cheroliv/runner-gradle (private)
 |===

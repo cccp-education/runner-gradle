@@ -1,47 +1,36 @@
 = PROMPT_REPRISE — runner-gradle
-:session: 020
+:session: 021
 :date: 2026-05-23
-:etat: Cleanup collectCompositeContext TERMINE — zero logique metier dans runner
+:etat: Cleanup pilot-plugin TERMINE — verifyBoroughs delegue a workspace-gradle N4
 :epic_actif: N/A
 
 == Contexte de fin
 
-collectCompositeContext supprime de runner-gradle build.gradle.kts (-272 lignes).
-La logique est deleguee aux plugins proprietaires via `generateCompositeContext` :
+verifyBoroughs (+ findFileRecursive, findExtensionRegistration, inferMetadataFromFilesystem,
+extractAdocTitle, BoroughDef preBootstrapBoroughs) supprime du build.gradle.kts (-364 lignes).
+La logique vit maintenant dans le pilot-plugin de workspace-gradle (foundry/private/workspace-gradle/pilot-plugin/).
 
-- codex-gradle (N2) → CodexVectorStore.searchBlocking()
-- training-gradle (N2) → ProcessBuilder codebase + AFNOR/REAC pgvector
-- codebase-gradle (N1) → CodexVectorStore + ProcessBuilder training
-
-Runner = zero tache de pipeline. Juste `plugins {}` + `includeBuild()`.
+Runner build.gradle.kts : 577 → 213 lignes.
+Objectif <200 lignes atteignable avec generateApiSchema → workspace-gradle.
 
 == Reprendre à
 
-. `./gradlew info` — verifier Runner v1.0
+. `./gradlew info` — verifier Runner v2.0
 . `git status` — voir les fichiers modifies non commites
-. `./gradlew verifyBoroughs` — New Jersey PASS
-. Prochaine session : suite du menage build.gradle.kts
-  - verifyBoroughs (~280 lignes) → deleguer a workspace-gradle (N4) ou plugin gouvernance
-  - deployWorkspace (~40 lignes) → deleguer a workspace-gradle
-  - generateApiSchema (~40 lignes) → deleguer a workspace-gradle ou supprimer (mock SaaS)
-  - Objectif : build.gradle.kts < 200 lignes (plugins + dagLevels + info)
+. Prochaine session : deleguer generateApiSchema (~50 lignes) → workspace-gradle (N4)
+  - Objectif : build.gradle.kts < 200 lignes (plugins + bakery + dagLevels + info + deployWorkspace)
 
-== Fichiers touches (hors gouvernance)
+== Fichiers touches
 
-- `build.gradle.kts` — -272 lignes (850→577), collectCompositeContext supprime
-- `settings.gradle.kts` — includeBuild(codebase-gradle) ajoute
-- `codex-gradle/.../CodexCompositeContextTask.kt` — nouveau (45 lignes)
-- `codex-gradle/.../CodexPlugin.kt` — +1 tache enregistree
-- `training-gradle/.../TrainingCompositeContextTask.kt` — nouveau (130 lignes)
-- `training-gradle/.../TrainingGradlePlugin.kt` — +1 tache enregistree
-- `training-gradle/build.gradle.kts` — alias(libs.plugins.readme) commente (fix temporaire)
-- `training-gradle/settings.gradle.kts` — include(:training-plugin) ajoute
-- `codebase-gradle/.../CodebaseCompositeContextTask.kt` — nouveau (110 lignes)
-- `codebase-gradle/.../CodebasePlugin.kt` — +1 tache enregistree
+- `build.gradle.kts` — -364 lignes (577→213), verifyBoroughs + helpers supprimes, +pilot plugin 0.0.0
+- `foundry/private/workspace-gradle/pilot-plugin/` — NOUVEAU sous-plugin N4
+  - `PilotPlugin.kt` — 15 lignes
+  - `VerifyBoroughsTask.kt` — 250 lignes (logique complete)
+  - `BoroughDef.kt` — 15 lignes (dataclass)
+  - `PilotExtension.kt` — 17 lignes
+  - `build.gradle.kts` — 65 lignes (plugin publish)
+  - `gradle/libs.versions.toml` — 39 lignes
 
-== Compilation — Statut croise
+== Compilation — Statut
 
-- runner-gradle → ✅ BUILD SUCCESSFUL
-- codex-gradle → ⚠️ conflit annotations koog-agents (prexistant)
-- training-gradle → ⚠️ libs.plugins.readme non resolu (prexistant)
-- codebase-gradle → ⚠️ libs.plugins.publish non resolu (prexistant)
+- runner-gradle → ✅ BUILD SUCCESSFUL (info + verifyBoroughs via pilot plugin)

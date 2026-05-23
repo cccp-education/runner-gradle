@@ -1,5 +1,19 @@
 = Taches Terminees Archive — Mai 2026 — Runner
 
+== Session 021 — 2026-05-23
+
+|===
+| EPIC | Tache | Statut
+
+| Cleanup
+| `verifyBoroughs supprime` — -364 lignes du build.gradle.kts runner-gradle. 577→213 lignes.
+| ✅ Delegue au pilot-plugin workspace-gradle (N4)
+
+| WSM-3
+| `pilot-plugin` — Nouveau sous-plugin workspace-gradle. PilotPlugin, VerifyBoroughsTask, BoroughDef, PilotExtension, build.gradle.kts.
+| ✅ 4 classes Kotlin, compile + mavenLocal. verifyBoroughs integre dans runner via plugin "cheroliv.com.workspace.pilot"
+|===
+
 == Session 020 — 2026-05-23
 
 |===

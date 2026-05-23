@@ -96,7 +96,7 @@ et transformations sont deleguees aux plugins propriétaires (N0/N1/N2).
 | `scanWorkspace` | Scan workspace → graph.json (node/edge/community) | `graphify-gradle` (N0)
 | `verifyDagAcyclic` | Verifie qu'aucun plugin n'importe un plugin de niveau superieur | `graphify-gradle` (N0)
 | `deployWorkspace` | Provisionne un workspace client complet (tous les plugins + office/ + configuration/) | runner-gradle (N3)
-| `verifyBoroughs` | Valide l'arborescence, la gouvernance agent et les metadonnees des 11 boroughs (EPIC K-4 Convention over Configuration) | runner-gradle (N3)
+| `verifyBoroughs` | Valide l'arborescence, la gouvernance agent et les metadonnees des 11 boroughs (EPIC K-4 Convention over Configuration) | workspace-gradle/pilot-plugin (N4)
 |===
 
 Le contrat DAG : la charge de la preuve est sur le plugin proprietaire, pas sur le consommateur.

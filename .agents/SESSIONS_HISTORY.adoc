@@ -4,6 +4,12 @@
 |===
 | Session | Date | Type | EPIC(s) | Score
 
+| 021
+| 2026-05-23
+| cleanup
+| verifyBoroughs delegue a workspace-gradle/pilot-plugin (N4). Runner -364 lignes (577→213). pilot-plugin compile + mavenLocal + integre via plugin.
+| 10/10 — pilot-plugin: PilotPlugin, VerifyBoroughsTask, BoroughDef, PilotExtension, build.gradle.kts, libs.versions.toml
+
 | 020
 | 2026-05-23
 | cleanup

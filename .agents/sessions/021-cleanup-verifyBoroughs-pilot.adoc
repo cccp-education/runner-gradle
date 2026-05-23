@@ -1,0 +1,47 @@
+= Session 021 — Cleanup verifyBoroughs + pilot-plugin workspace-gradle N4
+:date: 2026-05-23
+:epic: Cleanup
+:score: 10/10
+
+Délégation de la tâche `verifyBoroughs` (+364 lignes) du build.gradle.kts de
+runner-gradle vers le nouveau `pilot-plugin` de workspace-gradle (N4).
+La logique (BoroughDef, findFileRecursive, findExtensionRegistration,
+inferMetadataFromFilesystem, extractAdocTitle) est maintenant compilée dans
+le pilot-plugin sous forme de classes Kotlin.
+
+== Architecture cible
+
+[cols="1,3,3"]
+|===
+| Plugin | Tâche | Implémentation
+| workspace-gradle/pilot-plugin (N4) | `verifyBoroughs` | `VerifyBoroughsTask.kt` — 250 lignes compilées
+| runner-gradle (N3) | _(aucune)_ | `plugins { id("cheroliv.com.workspace.pilot") }`
+|===
+
+== Fichiers créés (workspace-gradle/pilot-plugin/)
+
+[cols="2,5"]
+|===
+| Fichier | Rôle
+| `PilotPlugin.kt` | 15 lignes — enregistrement verifyBoroughs
+| `VerifyBoroughsTask.kt` | 250 lignes — logique complète (BoroughDef, helpers, validations)
+| `BoroughDef.kt` | 15 lignes — data class
+| `PilotExtension.kt` | 17 lignes — extension configurable
+| `build.gradle.kts` | 65 lignes — plugin publish config
+| `gradle/libs.versions.toml` | 39 lignes — version catalog
+|===
+
+== Fichiers modifiés
+
+[cols="2,5"]
+|===
+| Fichier | Modification
+| `runner-gradle/build.gradle.kts` | -364 lignes (verifyBoroughs + helpers supprimés, 577→213). +pilot plugin 0.0.0
+|===
+
+== Runner — Résultat
+
+- `./gradlew info` → BUILD SUCCESSFUL ✅
+- `build.gradle.kts` : 213 lignes (577→213, -63%)
+- `./gradlew verifyBoroughs` → BUILD via pilot-plugin, 4 PASS / 5 WARN / 2 FAIL (mêmes résultats)
+- `info` documente verifyBoroughs comme "Pilot Tasks (workspace-gradle N4)"
