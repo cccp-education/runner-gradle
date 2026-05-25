@@ -9,3 +9,18 @@ build/
 *.key
 credentials.*
 site.yml
+
+# Artefacts JBake — générés par le plugin bakery de runner-gradle
+# Le runner est un pur consommateur de plugins (plugins { bakery, pilot }), pas un site web.
+# Ces fichiers sont des outputs de build, pas du code source.
+/README.md
+/.gitattributes
+/.jbakeignore
+/index.html
+/jbake.properties
+/assets/
+/content/
+/css/
+/img/
+/js/
+/templates/

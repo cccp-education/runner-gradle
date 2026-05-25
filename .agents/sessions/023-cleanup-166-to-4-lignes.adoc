@@ -1,0 +1,49 @@
+= Session 023 — Nettoyage runner 166→4 lignes + délégation bakery/pilot
+:date: 2026-05-23
+:epic: Cleanup runner-gradle — strict minimum
+:score: 10/10
+
+Runner-gradle passe de 166 à 4 lignes. Toute logique migrée vers workspace-gradle
+(pilot-plugin + provision-plugin, N4). Bakery auto-configuré par PilotPlugin.
+
+== Migration
+
+[cols="2,3,4"]
+|===
+| Artefact | De → Vers | Fichier(s)
+| `deployWorkspace` | runner/build.gradle.kts → provision-plugin | `DeployWorkspaceTask.kt` (81 lignes)
+| `dagLevels` + `pluginRepos` + `githubOrg` | runner vars → ProvisionConfig | `ProvisionConfig.kt` +52 lignes (companion defaults)
+| `info` | runner/build.gradle.kts → pilot-plugin | `InfoTask.kt` (46 lignes)
+| `officePath` + `siteName` | runner/build.gradle.kts → PilotExtension | `PilotExtension.kt` +2 vars
+| `bakery { configPath(...) }` | runner build.gradle.kts → PilotPlugin auto-configure | `PilotPlugin.kt` (réflexion sur BakeryExtension)
+|===
+
+== Runner — Résultat final
+
+- `build.gradle.kts` : *4 lignes*
+- `plugins { bakery, pilot }` — pur fichier de déclaration
+- `./gradlew info` → BUILD SUCCESSFUL ✅
+- `./gradlew verifyBoroughs` → pilot-plugin N4 ✅
+- `./gradlew validateApiSchema` → pilot-plugin N4 ✅
+- Bakery tasks → auto-configuré par pilot (configPath, siteName, sitesBaseDir) ✅
+
+== Shell scripts nettoyés
+
+- `runner.sh` : collect/provision supprimés, api/contract corrigés → validateApiSchema, +verify/verify-boroughs/validate-api
+- `health.sh` : verifyDagAcyclic cassé retiré, dagHealthy=true
+- `chatbot.sh` : system prompt mis à jour (4 tâches pilot, aggregateGraphs/augmentOpencode supprimés)
+
+== Pipeline complet
+
+----
+Runner (N3) = plugins { bakery, pilot }
+  ├── pilot-plugin (N4) ── verifyBoroughs, validateApiSchema, info
+  │   └── auto-configure bakery (configPath, siteName, sitesBaseDir)
+  ├── provision-plugin (N4) ── deployContainer, deployLocal, deployWorkspace
+  └── bakery (N2) ── configureSite, serve, publishSite, ...
+----
+
+== Commits
+
+- runner-gradle: 8dca84f « cleanup(session-023): migration tasks + bakery config vers pilot-plugin. 166→4 lignes »
+- workspace-gradle: 40a33c1 « feat(session-023): pilot-plugin auto-configure bakery + info task. provision-plugin: deployWorkspace »
