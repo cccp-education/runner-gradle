@@ -17,11 +17,13 @@ Le pipeline bakery de magic-stick (Staten Island) était cassé :
 == Vérification
 
 . Compilation locale : `./gradlew tasks -PsiteName=magic-stick` → `deploySite`, `bake`, `publishSite` présents ✅
-. Test E2E remote : article test → CI bake+deploy → visible sur `cheroliv.github.io/magic-stick/blog/2026/pipeline-test.html` → supprimé → CI cleanup ✅
-. CI run #27390675784 SUCCESS
+. Test E2E remote : article test → CI bake+deploy → visible sur `cccp-education.github.io/magic-stick/blog/2026/pipeline-test-cccp.html` → supprimé → CI cleanup ✅
+. CI run #27412582849 SUCCESS
 
 == Fichiers modifiés
 
 - `runner-gradle/build.gradle.kts` — 2 commits (db5e6a9, 314588e)
-- `office/.github/workflows/deploy-magic-stick.yml` — 1 commit (148b2f0)
-- `office/sites/magic-stick/jbake/content/blog/2026/pipeline-test.adoc` — créé puis supprimé (626721b, 965b9db)
+- `office/.github/workflows/deploy-magic-stick.yml` — repo cccp-education/runner-gradle, path engine
+- `office/sites/magic-stick/site.yml` — pushPage.repo.repository → cccp-education/magic-stick.git
+- Secret `MAGIC_STICK_CONFIG` dans cheroliv/office — mis à jour avec credentials cheroliv + GH_PAT
+- GitHub Pages activé sur cccp-education/magic-stick (gh-pages branch)
