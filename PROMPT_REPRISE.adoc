@@ -1,7 +1,7 @@
 = PROMPT_REPRISE — runner-gradle
-:session: 026
+:session: 027
 :date: 2026-06-12
-:etat: Runner = bakery 0.0.1 (Maven Central) + publishSite task. CI cheroliv.com OK.
+:etat: Runner = bakery 0.0.1 (Maven Central) + publishSite multi-site (-PsiteName). CI magic-stick + cheroliv.com OK.
 :epic_actif: Aucun — next = WSM-3 pilot-plugin tests OU EPIC L koog
 
 == Contexte de fin
@@ -12,11 +12,14 @@ plugins {
     id("education.cccp.bakery") version "0.0.1"
 }
 
-bakery { configPath = file("${System.getenv("OFFICE_PATH") ?: ...}/sites/cheroliv.com/site.yml").absolutePath }
+val siteName: String = project.findProperty("siteName") as String? ?: "cheroliv.com"
+val resolvedConfigPath = file("${System.getenv("OFFICE_PATH") ?: ...}/sites/$siteName/site.yml").absolutePath
+
+bakery { configPath = resolvedConfigPath }
 
 tasks.register("publishSite") {
     group = "publish"
-    description = "Bake + deploy cheroliv.com"
+    description = "Bake + deploy $siteName"
     dependsOn("bake", "deploySite")
 }
 ----
@@ -26,12 +29,12 @@ settings.gradle.kts : mavenLocal() + mavenCentral() + gradlePluginPortal()
 == Reprendre à
 
 . `git status`
-. `./gradlew info` — confirmer runner v2.0
+. `./gradlew tasks -PsiteName=magic-stick` — confirmer deploySite présent
 . WSM-3 — Tests pilot-plugin
 . OU EPIC L — Migration langgraph4j → koog+langchain4j
 
 == Fichiers touchés
 
-- runner-gradle/build.gradle.kts → bakery 0.0.1 + publishSite
-- runner-gradle/settings.gradle.kts → +mavenCentral()
-- runner-gradle/.agents/sessions/025-fix-bakery-publishSite-ci.adoc → nouveau
+- runner-gradle/build.gradle.kts → -PsiteName dynamique + configPath hors DSL
+- runner-gradle/.agents/sessions/026-fix-bakery-multisite.adoc → nouveau
+- office/.github/workflows/deploy-magic-stick.yml → cccp-education/runner-gradle

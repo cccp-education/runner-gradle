@@ -4,6 +4,12 @@
 |===
 | Session | Date | Type | EPIC(s) | Score
 
+| 026
+| 2026-06-12
+| fix
+| Fix bakery pipeline multi-site — -PsiteName dynamique + configPath hors DSL bakery{}. CI magic-stick + cheroliv.com OK.
+| 9/10 — runner-gradle: build.gradle.kts (2 commits), office: deploy-magic-stick.yml (cccp-education/runner-gradle). CI run #27390675784 SUCCESS.
+
 | 025
 | 2026-06-12
 | fix

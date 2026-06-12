@@ -1,0 +1,27 @@
+= Session 026 — Fix bakery pipeline multi-site
+:date: 2026-06-12
+:type: fix
+:score: 9/10
+
+== Contexte
+
+Le pipeline bakery de magic-stick (Staten Island) était cassé :
+- `build.gradle.kts` hardcodait `cheroliv.com` — ignorait `-PsiteName=magic-stick`
+- `deploy-magic-stick.yml` clonait `cheroliv/runner-gradle` (ancien nom) au lieu de `cccp-education/runner-gradle`
+
+== Actions
+
+. `build.gradle.kts` — `-PsiteName` dynamique (défaut `cheroliv.com`). `configPath` résolu hors du DSL `bakery{}` pour éviter le shadowing de `siteName` par la propriété d'extension `BakeryExtension.siteName`.
+. `deploy-magic-stick.yml` — repo `cccp-education/runner-gradle`, path `engine`, aligné sur `deploy-cheroliv-com.yml`.
+
+== Vérification
+
+. Compilation locale : `./gradlew tasks -PsiteName=magic-stick` → `deploySite`, `bake`, `publishSite` présents ✅
+. Test E2E remote : article test → CI bake+deploy → visible sur `cheroliv.github.io/magic-stick/blog/2026/pipeline-test.html` → supprimé → CI cleanup ✅
+. CI run #27390675784 SUCCESS
+
+== Fichiers modifiés
+
+- `runner-gradle/build.gradle.kts` — 2 commits (db5e6a9, 314588e)
+- `office/.github/workflows/deploy-magic-stick.yml` — 1 commit (148b2f0)
+- `office/sites/magic-stick/jbake/content/blog/2026/pipeline-test.adoc` — créé puis supprimé (626721b, 965b9db)
