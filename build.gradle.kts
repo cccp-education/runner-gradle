@@ -3,8 +3,9 @@ plugins {
 }
 
 val siteName: String = project.findProperty("siteName") as String? ?: "cheroliv.com"
+val resolvedConfigPath = file("${System.getenv("OFFICE_PATH") ?: throw GradleException("OFFICE_PATH not set")}/sites/$siteName/site.yml").absolutePath
 
-bakery { configPath = file("${System.getenv("OFFICE_PATH") ?: throw GradleException("OFFICE_PATH not set")}/sites/$siteName/site.yml").absolutePath }
+bakery { configPath = resolvedConfigPath }
 
 tasks.register("publishSite") {
     group = "publish"
