@@ -10,5 +10,5 @@ bakery { configPath = resolvedConfigPath }
 tasks.register("publishSite") {
     group = "publish"
     description = "Bake + deploy $siteName"
-    dependsOn("bake", "deploySite")
+    dependsOn("bake", "deploySite", "deployMaquette")
 }
