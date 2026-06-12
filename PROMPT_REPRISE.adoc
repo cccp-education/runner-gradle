@@ -1,54 +1,37 @@
 = PROMPT_REPRISE — runner-gradle
-:session: 024
-:date: 2026-05-23
-:etat: Runner = 4 lignes. assembleCompositeContext dans pilot-plugin. Option C TERMINEE.
+:session: 026
+:date: 2026-06-12
+:etat: Runner = bakery 0.0.1 (Maven Central) + publishSite task. CI cheroliv.com OK.
 :epic_actif: Aucun — next = WSM-3 pilot-plugin tests OU EPIC L koog
 
 == Contexte de fin
 
-Runner-gradle build.gradle.kts : 4 lignes :
+Runner-gradle build.gradle.kts :
 ----
 plugins {
-    id("education.cccp.bakery") version "0.1.4"
-    id("cheroliv.com.workspace.pilot") version "0.0.0"
+    id("education.cccp.bakery") version "0.0.1"
+}
+
+bakery { configPath = file("${System.getenv("OFFICE_PATH") ?: ...}/sites/cheroliv.com/site.yml").absolutePath }
+
+tasks.register("publishSite") {
+    group = "publish"
+    description = "Bake + deploy cheroliv.com"
+    dependsOn("bake", "deploySite")
 }
 ----
 
-Pipeline A→C→B :
-- Option A : inferMetadataAsciiDocTask (pilot-plugin) — ✅ TERMINE
-- Option C : assembleCompositeContext (pilot-plugin) — ✅ TERMINE (cette session)
-- Option B : EPIC L koog+langchain4j
-
-assembleCompositeContext orchestre codex (N2) + training (N2) + codebase (N1) via ProcessBuilder
-et fusionne en build/composite-context.json. Runner = terminal consommateur pur.
+settings.gradle.kts : mavenLocal() + mavenCentral() + gradlePluginPortal()
 
 == Reprendre à
 
 . `git status`
-. `./gradlew info` — confirmer runner v2.0 + assembleCompositeContext dans context
-. WSM-3 — Tests pilot-plugin (verifyBoroughs, validateApiSchema, info, assembleCompositeContext)
+. `./gradlew info` — confirmer runner v2.0
+. WSM-3 — Tests pilot-plugin
 . OU EPIC L — Migration langgraph4j → koog+langchain4j
 
 == Fichiers touchés
 
-- runner-gradle/build.gradle.kts → 4 lignes (inchangé, terminal consommateur)
-- runner-gradle/settings.gradle.kts → 4 lignes (inchangé)
-- runner-gradle/.agents/sessions/024-optionc-assemble-composite-context.adoc → nouveau
-
-== workspace-gradle touché
-
-- pilot-plugin/PilotExtension.kt → +3 propriétés (codexProjectDir, trainingProjectDir, codebaseProjectDir)
-- pilot-plugin/PilotPlugin.kt → +enregistrement assembleCompositeContext
-- pilot-plugin/AssembleCompositeContextTask.kt → nouveau (142 lignes)
-- pilot-plugin/InfoTask.kt → +groupe "context"
-
-== Compilation — Statut
-
-- runner-gradle → BUILD SUCCESSFUL (info + assembleCompositeContext)
-- pilot-plugin → BUILD SUCCESSFUL + publishToMavenLocal (15 tasks)
-
-== Limitation
-
-Les 3 boroughs N1/N2 (codex/training/codebase) ont des problèmes de compilation
-préexistants. L'orchestration est fonctionnelle et résiliente (0 entry = BUILD SUCCESSFUL).
-Prochaines sessions : fixer les boroughs individuellement.
+- runner-gradle/build.gradle.kts → bakery 0.0.1 + publishSite
+- runner-gradle/settings.gradle.kts → +mavenCentral()
+- runner-gradle/.agents/sessions/025-fix-bakery-publishSite-ci.adoc → nouveau

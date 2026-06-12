@@ -308,6 +308,24 @@
 | ✅ Runner = `plugins { bakery, pilot }`. BUILD SUCCESSFUL.
 |===
 
+== Session 025 — 2026-06-12
+
+|===
+| EPIC | Tache | Statut
+
+| Fix
+| `bakery 0.0.1` — Remplacer 0.1.4 (inexistant sur Maven Central) par 0.0.1 (publié)
+| ✅ build.gradle.kts + settings.gradle.kts (+mavenCentral)
+
+| Fix
+| `publishSite` — Nouvelle tâche Gradle (bake + deploySite) pour CI cheroliv.com
+| ✅ dependsOn("bake", "deploySite"), bakery { configPath } pointe vers OFFICE_PATH
+
+| Fix
+| `CI workflow` — office/.github/workflows/deploy-cheroliv-com.yml corrigé (cheroliv/engine → cccp-education/runner-gradle)
+| ✅ CI run #27388925704 SUCCESS, article 0126 publié
+|===
+
 == Session 024 — 2026-05-23
 
 |===

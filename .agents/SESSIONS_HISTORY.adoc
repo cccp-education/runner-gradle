@@ -4,6 +4,12 @@
 |===
 | Session | Date | Type | EPIC(s) | Score
 
+| 025
+| 2026-06-12
+| fix
+| Fix bakery 0.0.1 (Maven Central) + publishSite task + CI cheroliv.com
+| 9/10 — runner-gradle: build.gradle.kts (bakery 0.0.1 + publishSite), settings.gradle.kts (+mavenCentral). CI run #27388925704 SUCCESS.
+
 | 024
 | 2026-05-23
 | feat

@@ -1,0 +1,28 @@
+= Session 025 — Fix bakery 0.0.1 + publishSite CI
+:date: 2026-06-12
+:type: fix
+:score: 9/10
+
+== Contexte
+
+Le pipeline CI de cheroliv.com était cassé :
+- `build.gradle.kts` utilisait bakery 0.1.4 (inexistant sur Maven Central)
+- `settings.gradle.kts` n'avait pas `mavenCentral()`
+- Pas de tâche `publishSite` dans runner-gradle
+- Le workflow CI checkoutait `cheroliv/engine` (inexistant) au lieu de `cccp-education/runner-gradle`
+
+== Actions
+
+. `build.gradle.kts` → bakery 0.0.1 (depuis Maven Central) + tâche `publishSite` (bake + deploySite)
+. `settings.gradle.kts` → `mavenLocal()` + `mavenCentral()` + `gradlePluginPortal()`
+. Suppression du plugin `cheroliv.com.workspace.pilot` (non nécessaire pour bakery)
+. `bakery { configPath }` pointe vers `OFFICE_PATH/sites/cheroliv.com/site.yml`
+
+== Fichiers modifiés
+
+- `build.gradle.kts` — bakery 0.0.1 + publishSite task
+- `settings.gradle.kts` — +mavenCentral()
+
+== Résultat
+
+CI run #27388925704 → SUCCESS. Article 0126 (hyperframes) publié.

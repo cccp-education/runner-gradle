@@ -5,9 +5,9 @@ _Regles absolues_ : voir `AGENT.adoc`
 _Ontologie spatiale_ : voir `configuration/.agents/AGENT_GOVERNANCE.adoc`
 _DAG_ : N3 — Orchestration (Regle 4bis)
 
-_Derniere mise a jour_ : 2026-05-23 (Session 024 — Option C assembleCompositeContext. Pipeline A→C : A (inferMetadata) TERMINE, C (cette session) TERMINE. Next : B (EPIC L koog).)
-_Session terminee_ : 024 — Option C assembleCompositeContext. AssembleCompositeContextTask (142 lignes) dans pilot-plugin N4. Orchestration codex→training→codebase via ProcessBuilder. Runner = 4 lignes.
-_Session a venir_ : 025 — WSM-3 pilot-plugin tests OU EPIC L koog
+_Derniere mise a jour_ : 2026-06-12 (Session 025 — Fix bakery 0.0.1 + publishSite CI. CI cheroliv.com SUCCESS.)
+_Session terminee_ : 025 — Fix bakery 0.0.1 + publishSite CI. build.gradle.kts (bakery 0.0.1 + publishSite), settings.gradle.kts (+mavenCentral). CI run #27388925704 SUCCESS.
+_Session a venir_ : 026 — WSM-3 pilot-plugin tests OU EPIC L koog
 
 '''
 == REGLES ABSOLUES (resume)
