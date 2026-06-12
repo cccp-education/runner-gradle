@@ -1,0 +1,40 @@
+= Session 027 — Fix publishSite + cccp.education bootstrap
+:date: 2026-06-12
+:type: fix/feat
+:score: 9/10
+
+== Résumé
+
+Session transverse : bootstrap du site cccp.education + 2 correctifs runner-gradle
+pour supporter le déploiement multi-site (magic-stick, cheroliv.com, cccp.education).
+
+== Modifications runner-gradle
+
+=== Commit 1: fix publishSite depends on deployMaquette (a2d744f)
+- Ajout de `deployMaquette` dans dependsOn de publishSite
+- Motivé par le besoin de déployer la maquette cccp.education
+
+=== Commit 2: revert deployMaquette from publishSite (b845b3e)
+- Retrait de `deployMaquette` — la maquette est maintenant bakée comme page JBake
+- Raison: bug de résolution de chemin dans bakery-gradle (from relatif à engine/, pas au site)
+- Solution alternative: maquette.adoc en passthrough HTML dans jbake/content/
+
+== Impact cross-borough
+
+- cccp.education: nouveau site vitrine (28 fichiers, CI/CD, secret, DNS script)
+- magic-stick: pipeline déjà stable (session 026)
+- cheroliv.com: pipeline déjà stable (session 025)
+- bakery-gradle: bug identifié dans deployMaquette (path resolution), non corrigé côté plugin
+
+== Leçons
+
+. deployMaquette de bakery-gradle résout `from` par rapport au projet Gradle (engine/),
+  pas par rapport au site source. Bug à corriger dans bakery-gradle si on veut réactiver
+  la fonctionnalité.
+. GitHub Pages = 1 branche par repo. La maquette sur une branche séparée du même repo
+  ne fonctionne pas. Solution: sous-dossier ou page JBake.
+. Le pattern multi-site fonctionne: -PsiteName + OFFICE_PATH + site.yml par site.
+
+== Prochaine session
+
+028 — WSM-3 pilot-plugin tests OU EPIC L koog

@@ -4,6 +4,12 @@
 |===
 | Session | Date | Type | EPIC(s) | Score
 
+| 027
+| 2026-06-12
+| fix/feat
+| Fix publishSite + cccp.education bootstrap. 2 commits runner-gradle (a2d744f +deployMaquette, b845b3e revert). Site cccp.education en ligne (28 fichiers, CI/CD, secret CCCP_EDUCATION_CONFIG, DNS script). Bug bakery-gradle deployMaquette identifié (path resolution).
+| 9/10
+
 | 026
 | 2026-06-12
 | fix

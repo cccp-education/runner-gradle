@@ -1,24 +1,22 @@
-= PROMPT_REPRISE — Engine (New Jersey N3)
-:date: 2026-05-19
-:session: 018 — Test réel collectCompositeContext + cross-borough planner
+= PROMPT_REPRISE — Runner (New Jersey N3)
+:date: 2026-06-12
+:session: 028 — WSM-3 pilot-plugin tests OU EPIC L koog
 :status: A FAIRE
 
-== Livré en session 017
+== Livré en session 027
 
-* Pipeline N0→N3 ABC — Wiring graphify (N0) + codebase (N1) dans collectCompositeContext :
-  - Phase 0 graphify scan → graph.json frais
-  - Phase 4 codebase pgvector RAG avec fallback
-  - Hack augmentOpencode supprimé — remplacé par ProcessBuilder réel
-  - Option skipGraphify
+* Fix publishSite + cccp.education bootstrap :
+  - 2 commits runner-gradle (a2d744f +deployMaquette, b845b3e revert)
+  - Site cccp.education en ligne (28 fichiers, CI/CD, secret, DNS script)
+  - Bug bakery-gradle deployMaquette identifié (path resolution from→engine/ pas site/)
 
-== Prochaine session (018)
+== Prochaine session (028)
 
-* Tester collectCompositeContext en conditions réelles (Ollama + pgvector up)
-* Vérifier que graphify scan produit graph.json exploitable
-* Option C cross-borough complète : planner-gradle consomme composite-context.json
-* verifyBoroughs — réduire les 7 WARN (build artifacts non produits)
+* WSM-3 pilot-plugin tests (workspace-gradle N4)
+* OU EPIC L — Migration koog+langchain4j
 
 == Points d'attention
 
-* Engine : 5 tâches Gradle, pas de src/main/kotlin (by design). Zéro tests (charge de la preuve sur les plugins)
-* Zéro commit sur engine
+* Runner : 5 tâches Gradle, pas de src/main/kotlin (by design). Zéro tests.
+* Zéro commit sur engine sans permission.
+* build.gradle.kts: bakery { configPath = resolvedConfigPath }, publishSite dependsOn(bake, deploySite)

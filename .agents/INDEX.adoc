@@ -5,9 +5,9 @@ _Regles absolues_ : voir `AGENT.adoc`
 _Ontologie spatiale_ : voir `configuration/.agents/AGENT_GOVERNANCE.adoc`
 _DAG_ : N3 — Orchestration (Regle 4bis)
 
-_Derniere mise a jour_ : 2026-06-12 (Session 026 — Fix bakery pipeline multi-site. CI magic-stick + cheroliv.com OK.)
-_Session terminee_ : 026 — Fix bakery pipeline multi-site. build.gradle.kts (-PsiteName dynamique + configPath hors DSL), deploy-magic-stick.yml (cccp-education/runner-gradle). CI run #27390675784 SUCCESS.
-_Session a venir_ : 027 — WSM-3 pilot-plugin tests OU EPIC L koog
+_Derniere mise a jour_ : 2026-06-12 (Session 027 — Fix publishSite + cccp.education bootstrap)
+_Session terminee_ : 027 — Fix publishSite + cccp.education bootstrap. 2 commits runner-gradle (a2d744f +deployMaquette, b845b3e revert). Site cccp.education en ligne.
+_Session a venir_ : 028 — WSM-3 pilot-plugin tests OU EPIC L koog
 
 '''
 == REGLES ABSOLUES (resume)
@@ -37,6 +37,7 @@ _Session a venir_ : 027 — WSM-3 pilot-plugin tests OU EPIC L koog
 
 |===
 | # | Date | Type | Sujet | Score
+| 27 | 2026-06-12 | fix/feat | Fix publishSite + cccp.education bootstrap. 2 commits (a2d744f +deployMaquette, b845b3e revert). Site cccp.education en ligne (28 fichiers, CI/CD, secret, DNS script). | 9/10
 | 26 | 2026-06-12 | fix | Fix bakery pipeline multi-site — -PsiteName dynamique + configPath hors DSL bakery{}. CI magic-stick + cheroliv.com OK. | 9/10
 | 25 | 2026-06-12 | fix | Fix bakery 0.0.1 (Maven Central) + publishSite task + CI cheroliv.com. | 9/10
 | 24 | 2026-05-23 | feat | Option C assembleCompositeContext — AssembleCompositeContextTask (142 lignes) dans pilot-plugin N4. Orchestration codex+training+codebase → composite-context.json. Pipeline A→C complété. | 9/10
