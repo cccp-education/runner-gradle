@@ -1,0 +1,46 @@
+= Tâches Terminées Archive — Juin 2026 — Runner
+
+== Session 029 — 2026-06-19
+
+|===
+| EPIC | Tâche | Statut
+| Cleanup
+| `publishSite` — supprimé de runner-gradle/build.gradle.kts. La tâche aggregate (bake + deploySite) est désormais enregistrée par le plugin bakery-gradle (N2).
+| ✅ Runner allégé de la logique métier. build.gradle.kts passe de 16 à 11 lignes.
+|===
+
+== Session 028 — 2026-06-19
+
+|===
+| EPIC | Tâche | Statut
+| Fix
+| `siteName` default + `OFFICE_PATH` fallback — IntelliJ IDE import fix. gradle.properties créé avec `siteName=magic-stick`.
+| ✅ Import IDE fonctionne sans -PsiteName.
+|===
+
+== Session 027 — 2026-06-12
+
+|===
+| EPIC | Tâche | Statut
+| Fix/feat
+| Fix publishSite + cccp.education bootstrap. 2 commits runner-gradle. Site cccp.education en ligne (28 fichiers, CI/CD, secret, DNS script).
+| ✅
+|===
+
+== Session 026 — 2026-06-12
+
+|===
+| EPIC | Tâche | Statut
+| Fix
+| Fix bakery pipeline multi-site — -PsiteName dynamique + configPath hors DSL bakery{}. CI magic-stick + cheroliv.com OK.
+| ✅
+|===
+
+== Session 025 — 2026-06-12
+
+|===
+| EPIC | Tâche | Statut
+| Fix
+| Fix bakery 0.0.1 (Maven Central) + publishSite task + CI cheroliv.com.
+| ✅
+|===

@@ -4,6 +4,12 @@
 |===
 | Session | Date | Type | EPIC(s) | Score
 
+| 029
+| 2026-06-19
+| cleanup
+| Extract publishSite → bakery-gradle plugin. build.gradle.kts allégé (-5 lignes). publishSite vivra désormais dans le plugin N2.
+| 9/10 — runner-gradle: build.gradle.kts (suppression publishSite task), PROMPT_REPRISE.adoc. bakery-gradle: 3 fichiers modifiés (BakeryConstants, DeployTaskRegistrar, BakeryPlugin).
+
 | 028
 | 2026-06-19
 | fix

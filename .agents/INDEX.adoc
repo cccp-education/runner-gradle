@@ -5,9 +5,9 @@ _Regles absolues_ : voir `AGENT.adoc`
 _Ontologie spatiale_ : voir `configuration/.agents/AGENT_GOVERNANCE.adoc`
 _DAG_ : N3 — Orchestration (Regle 4bis)
 
-_Derniere mise a jour_ : 2026-06-19 (Session 028 — Fix IntelliJ IDE import)
-_Session terminee_ : 028 — Fix IntelliJ IDE import : siteName default + OFFICE_PATH fallback. gradle.properties créé.
-_Session a venir_ : 029 — WSM-3 pilot-plugin tests OU EPIC L koog
+_Derniere mise a jour_ : 2026-06-19 (Session 029 — Extract publishSite → bakery)
+_Session terminee_ : 029 — Extract publishSite → bakery-gradle plugin. Runner nettoyé de la logique métier.
+_Session a venir_ : 030 — WSM-3 pilot-plugin tests OU EPIC L koog
 
 '''
 == REGLES ABSOLUES (resume)
@@ -37,6 +37,7 @@ _Session a venir_ : 029 — WSM-3 pilot-plugin tests OU EPIC L koog
 
 |===
 | # | Date | Type | Sujet | Score
+| 29 | 2026-06-19 | cleanup | Extract publishSite → bakery-gradle plugin. Runner nettoyé de la logique métier. | 9/10
 | 28 | 2026-06-19 | fix | Fix IntelliJ IDE import — siteName default + OFFICE_PATH fallback. gradle.properties créé. | 9/10
 | 27 | 2026-06-12 | fix/feat | Fix publishSite + cccp.education bootstrap. 2 commits (a2d744f +deployMaquette, b845b3e revert). Site cccp.education en ligne (28 fichiers, CI/CD, secret, DNS script). | 9/10
 | 26 | 2026-06-12 | fix | Fix bakery pipeline multi-site — -PsiteName dynamique + configPath hors DSL bakery{}. CI magic-stick + cheroliv.com OK. | 9/10

@@ -1,0 +1,26 @@
+= Session 029 — Extract publishSite → bakery-gradle plugin
+:session: 029
+:date: 2026-06-19
+:type: cleanup
+:score: 9/10
+
+== Contexte
+
+La tâche `publishSite` (convenience aggregate: bake + deploySite) était définie dans
+runner-gradle/build.gradle.kts alors que runner est un consommateur N3 sans logique métier.
+
+== Changements
+
+=== bakery-gradle (N2 plugin)
+- `BakeryConstants.kt` — ajout `PUBLISH_GROUP = "publish"`
+- `DeployTaskRegistrar.kt` — nouvelle `registerPublishSiteTask()` enregistre `publishSite` (group=publish, dependsOn=bake + deploySite)
+- `BakeryPlugin.kt` — appel à `registerPublishSiteTask()` dans `registerFullPipelineTasks`
+
+=== runner-gradle (N3 consumer)
+- `build.gradle.kts` — supprimé le bloc `tasks.register("publishSite")` (maintenant fourni par le plugin bakery)
+- `PROMPT_REPRISE.adoc` — mise à jour du contexte
+
+== Vérification
+
+- `./gradlew :bakery-plugin:compileKotlin` ✅ (aucune erreur nouvelle)
+- `./gradlew tasks -PsiteName=magic-stick` → `publishSite` présent (fourni par plugin bakery)

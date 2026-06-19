@@ -9,8 +9,3 @@ val resolvedConfigPath: String = file("$officePath/sites/$siteName/site.yml").ab
 
 bakery { configPath = resolvedConfigPath }
 
-tasks.register("publishSite") {
-    group = "publish"
-    description = "Bake + deploy $siteName"
-    dependsOn("bake", "deploySite")
-}
