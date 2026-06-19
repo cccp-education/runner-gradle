@@ -4,6 +4,12 @@
 |===
 | Session | Date | Type | EPIC(s) | Score
 
+| 028
+| 2026-06-19
+| fix
+| Fix IntelliJ IDE import — siteName default + OFFICE_PATH fallback. build.gradle.kts (OFFICE_PATH→\$HOME/workspace/office), gradle.properties créé.
+| 9/10
+
 | 027
 | 2026-06-12
 | fix/feat

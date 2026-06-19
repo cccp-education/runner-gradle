@@ -1,0 +1,24 @@
+= Session 028 — Fix IntelliJ IDE import — siteName default + OFFICE_PATH fallback
+:date: 2026-06-19
+:type: fix
+:score: 9/10
+
+== Résumé
+
+Correction de l'import IntelliJ IDEA qui échouait car `siteName` et `OFFICE_PATH`
+étaient requis à la configuration (phase d'évaluation du build script par l'IDE).
+
+== Modifications
+
+=== gradle.properties (nouveau)
+- Ajout de `siteName=magic-stick` comme valeur par défaut pour l'IDE
+- Surchargeable à l'exécution via `-PsiteName=<domain>`
+
+=== build.gradle.kts
+- `OFFICE_PATH` : remplacement du `throw GradleException` par un fallback
+  vers `$HOME/workspace/office`
+- Fonctionnement inchangé en CLI (la variable d'env prime)
+
+== Prochaine session
+
+029 — WSM-3 pilot-plugin tests OU EPIC L koog

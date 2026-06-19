@@ -1,16 +1,16 @@
 = PROMPT_REPRISE — Runner (New Jersey N3)
-:date: 2026-06-12
-:session: 028 — WSM-3 pilot-plugin tests OU EPIC L koog
+:date: 2026-06-19
+:session: 029 — WSM-3 pilot-plugin tests OU EPIC L koog
 :status: A FAIRE
 
-== Livré en session 027
+== Livré en session 028
 
-* Fix publishSite + cccp.education bootstrap :
-  - 2 commits runner-gradle (a2d744f +deployMaquette, b845b3e revert)
-  - Site cccp.education en ligne (28 fichiers, CI/CD, secret, DNS script)
-  - Bug bakery-gradle deployMaquette identifié (path resolution from→engine/ pas site/)
+* Fix IntelliJ IDE import :
+  - build.gradle.kts : OFFICE_PATH fallback → $HOME/workspace/office
+  - gradle.properties : siteName=magic-stick (valeur par défaut pour l'IDE)
+  - Surchargeable via -PsiteName=<domain> en CLI
 
-== Prochaine session (028)
+== Prochaine session (029)
 
 * WSM-3 pilot-plugin tests (workspace-gradle N4)
 * OU EPIC L — Migration koog+langchain4j
