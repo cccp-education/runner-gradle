@@ -17,7 +17,7 @@ Commands:
   verify               Verify boroughs + OpenAPI contract
   verify-boroughs      Validate metadata contracts for 11 boroughs
   validate-api         Validate OpenAPI 3.0 contract (openapi.yaml)
-  chatbot [model]      Start REPL with Ollama (default: deepseek-v4-pro:cloud)
+  chatbot [model]      Start REPL with Ollama (default: gpt-oss:120b-cloud)
   health               Return workspace health JSON
   tasks                List all Gradle tasks
 
@@ -46,7 +46,7 @@ case "${1:-}" in
         ./gradlew validateApiSchema -q
         ;;
     chatbot)
-        ./chatbot.sh "${2:-deepseek-v4-pro:cloud}"
+        ./chatbot.sh "${2:-gpt-oss:120b-cloud}"
         ;;
     health)
         ./health.sh

@@ -4,7 +4,7 @@
 
 set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-MODEL="${1:-deepseek-v4-pro:cloud}"
+MODEL="${1:-gpt-oss:120b-cloud}"
 
 SYSTEM_PROMPT="Tu es l'orchestrateur N3 du workspace Runner. Ton rôle est de superviser l'écosystème des plugins Gradle (N0 à N4), de garantir le respect du DAG (Règle 4bis : aucun plugin n'importe un plugin de niveau supérieur), et de piloter les opérations transverses (verifyBoroughs, validateApiSchema).
 
@@ -46,7 +46,7 @@ chat() {
             messages: [{ role: "user", content: $prompt }],
             stream: false
         }')
-    curl -s http://localhost:11434/api/chat -d "$payload" | jq -r '.message.content // "Erreur: pas de reponse du modele"'
+    curl -s http://localhost:11442/api/chat -d "$payload" | jq -r '.message.content // "Erreur: pas de reponse du modele"'
 }
 
 display_banner
