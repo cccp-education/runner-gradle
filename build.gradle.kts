@@ -1,5 +1,5 @@
 plugins {
-    id("education.cccp.bakery") version "0.0.4"
+    id("education.cccp.bakery") version "0.0.8"
 }
 
 val siteName: String = project.findProperty("siteName") as String?
