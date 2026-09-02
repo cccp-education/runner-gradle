@@ -11,7 +11,9 @@ buildscript {
 }
 
 plugins {
-    id("education.cccp.bakery") version "0.0.9"
+    // MEM-CAT-ROLLOUT-5 (D7/C7) — alias from the published workspace catalog: no hardcoded
+    // version anymore, the cross-borough source of truth drives the bakery plugin version.
+    alias(ws.plugins.bakery)
 }
 
 val siteName: String = project.findProperty("siteName") as String?

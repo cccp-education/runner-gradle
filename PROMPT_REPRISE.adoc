@@ -27,20 +27,23 @@ settings.gradle.kts : mavenLocal() + mavenCentral() + gradlePluginPortal()
 . WSM-3 — Tests pilot-plugin
 . OU EPIC L — Migration langgraph4j → koog+langchain4j
 
-== 🟡 EPIC MEM-CAT-ROLLOUT — Adoption version catalog workspace (S-028, cross-borough MEMPHIS)
+== ✅ EPIC MEM-CAT-ROLLOUT — Adoption version catalog workspace (S-028, cross-borough MEMPHIS)
 
 _Origine : demande pilote S-028 (workspace-bom) — cas C7 du cadrage MEM-CATALOG
 (hardcode `id(...) version` non couvert). Référentiel : `workspace-bom/BACKLOG.adoc`._
 
-=== US-ROLLOUT-5 — Pin workspace-catalog + alias bakery (P2, 3 pts, ordre 5)
+=== US-ROLLOUT-5 — Pin workspace-catalog + alias bakery (TERMINÉ S-031)
 
-*Statut* : 🟡 À FAIRE
+*Statut* : ✅ TERMINÉ (S-031)
 
-- [ ] `settings.gradle.kts` : `create("ws") { from("education.cccp:workspace-catalog:0.0.30") }` (pin unique D4)
-- [ ] `build.gradle.kts` : `id("education.cccp.bakery") version "0.0.9"` →
-  `alias(ws.plugins.bakery)` (hardcode C7 éliminé)
-- [ ] Gate : `./gradlew tasks -PsiteName=magic-stick` VERT + CI magic-stick/cheroliv.com OK
-- [ ] Baby-step : settings d'abord, build verify, puis alias
+- [x] `settings.gradle.kts` : `dependencyResolutionManagement { repositories { mavenLocal(); mavenCentral() } + create("ws") from(...0.0.31) }` (pin unique D4)
+  — piège : le runner n'avait PAS de `dependencyResolutionManagement.repositories`
+  (que pluginManagement) → "no repositories are defined" au 1er essai, corrigé.
+- [x] Entrée `[plugins]` bakery ajoutée au toml workspace-bom (D7) + release BOM+catalog 0.0.31 (mavenLocal).
+- [x] `build.gradle.kts` : `id("education.cccp.bakery") version "0.0.9"` → `alias(ws.plugins.bakery)` (hardcode C7 éliminé).
+- [x] Gate : `./gradlew tasks -PsiteName=magic-stick` VERT (deploySite + publishSite présents)
+  + `buildEnvironment` prouve `education.cccp:bakery-plugin:0.0.9` résolu via ws.
+- [ ] CI magic-stick/cheroliv.com : déclencher un run réel pour confirmation deploy.
 
 == Fichiers touchés
 
