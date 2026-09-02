@@ -27,6 +27,21 @@ settings.gradle.kts : mavenLocal() + mavenCentral() + gradlePluginPortal()
 . WSM-3 — Tests pilot-plugin
 . OU EPIC L — Migration langgraph4j → koog+langchain4j
 
+== 🟡 EPIC MEM-CAT-ROLLOUT — Adoption version catalog workspace (S-028, cross-borough MEMPHIS)
+
+_Origine : demande pilote S-028 (workspace-bom) — cas C7 du cadrage MEM-CATALOG
+(hardcode `id(...) version` non couvert). Référentiel : `workspace-bom/BACKLOG.adoc`._
+
+=== US-ROLLOUT-5 — Pin workspace-catalog + alias bakery (P2, 3 pts, ordre 5)
+
+*Statut* : 🟡 À FAIRE
+
+- [ ] `settings.gradle.kts` : `create("ws") { from("education.cccp:workspace-catalog:0.0.30") }` (pin unique D4)
+- [ ] `build.gradle.kts` : `id("education.cccp.bakery") version "0.0.9"` →
+  `alias(ws.plugins.bakery)` (hardcode C7 éliminé)
+- [ ] Gate : `./gradlew tasks -PsiteName=magic-stick` VERT + CI magic-stick/cheroliv.com OK
+- [ ] Baby-step : settings d'abord, build verify, puis alias
+
 == Fichiers touchés
 
 - runner-gradle/build.gradle.kts → -PsiteName dynamique + configPath hors DSL
