@@ -18,5 +18,5 @@
 == Points d'attention
 
 * Runner : 5 tâches Gradle, pas de src/main/kotlin (by design). Zéro tests.
-* Zéro commit sur engine sans permission.
+* Git autorisé (décision pilote 2026-09-17) — zéro secret commité.
 * build.gradle.kts: bakery { configPath = resolvedConfigPath }, publishSite dependsOn(bake, deploySite)

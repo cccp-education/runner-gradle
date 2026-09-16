@@ -30,10 +30,9 @@ depuis `configuration/` (cercle 1), et applique les regles de gouvernance global
 
 === Git
 
-**INTERDICTION FORMELLE** de commit/push/merge sans permission explicite de l'utilisateur.
+* Commit/push/merge autorisés (décision pilote 2026-09-17 — suppression de l'interdiction formelle). Ne JAMAIS commiter de secret.
 
-Commandes autorisees (lecture seule) : `git status`, `git diff`, `git log`, `git show`
-Commandes interdites (sauf ordre) : `git add`, `git commit`, `git push`, `git merge`, `git rebase`
+Lecture seule toujours autorisée : `git status`, `git diff`, `git log`, `git show`
 
 === Pas de `publishToMavenLocal`
 
@@ -69,7 +68,7 @@ implémentation. Voir leçon L09 dans `configuration/.agents/lazy/lecon-l09.adoc
 === Regle 7 — Verifier la compilation AVANT chaque commit
 
 * Avant `git commit`, lancer la tache concernee (ex: `./gradlew <nomDeLaTache>`)
-* Si echec -> interdiction de commiter -> corriger d'abord
+* Si échec de compilation → ne pas commiter avant correction
 * Voir lecon L10 dans `configuration/.agents/lazy/lecon-l10.adoc`
 
 == Procedure de Fin de Session (obligatoire)
