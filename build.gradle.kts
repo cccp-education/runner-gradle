@@ -6,6 +6,10 @@ buildscript {
         resolutionStrategy {
             force("org.jetbrains.kotlin:kotlin-stdlib:2.4.10")
             force("org.jetbrains:annotations:26.0.2-1")
+            // The bakery-plugin POM hard-pins its build-time workspace-bom (0.0.58);
+            // the runner aligns the whole classpath on the latest published BOM so
+            // every site baked through N3 resolves the newest constraints.
+            force("education.cccp:workspace-bom:0.0.60")
         }
     }
 }
