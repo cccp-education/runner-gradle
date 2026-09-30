@@ -1,16 +1,18 @@
 = PROMPT_REPRISE — Runner (New Jersey N3)
-:date: 2026-06-19
-:session: 029 — WSM-3 pilot-plugin tests OU EPIC L koog
+:date: 2026-09-30
+:session: 031 — WSM-3 pilot-plugin tests OU EPIC L koog
 :status: A FAIRE
 
-== Livré en session 028
+== Livré en session 030
 
-* Fix IntelliJ IDE import :
-  - build.gradle.kts : OFFICE_PATH fallback → $HOME/workspace/office
-  - gradle.properties : siteName=magic-stick (valeur par défaut pour l'IDE)
-  - Surchargeable via -PsiteName=<domain> en CLI
+* Re-pin `workspace-catalog` `0.0.60 → 0.0.61` (settings.gradle.kts).
+* `force("...workspace-bom:0.0.60")` → `0.0.61` (build.gradle.kts) — aligné sur
+  bakery 0.0.21 qui pinne désormais lui-même le BOM 0.0.61.
+* Fix drift cross-borough (déclenché cheroliv S-058) : le runner (N3) résout
+  bakery-plugin 0.0.21 → document-plugin 0.0.19 (avant 0.0.20 → 0.0.18).
+* Preuve : `buildEnvironment` → `bakery-plugin:0.0.21` > `document-plugin:0.0.19`.
 
-== Prochaine session (029)
+== Prochaine session (031)
 
 * WSM-3 pilot-plugin tests (workspace-gradle N4)
 * OU EPIC L — Migration koog+langchain4j
@@ -20,3 +22,5 @@
 * Runner : 5 tâches Gradle, pas de src/main/kotlin (by design). Zéro tests.
 * Git autorisé (décision pilote 2026-09-17) — zéro secret commité.
 * build.gradle.kts: bakery { configPath = resolvedConfigPath }, publishSite dependsOn(bake, deploySite)
+* Pin catalogue = source de vérité cross-borough (D4) ; bumper ce pin à chaque
+  release MEMPHIS qui change le bakery consommé.

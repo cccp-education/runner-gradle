@@ -4,6 +4,12 @@
 |===
 | Session | Date | Type | EPIC(s) | Score
 
+| 030
+| 2026-09-30
+| maintenance
+| Re-pin workspace-catalog 0.0.60 → 0.0.61 + force BOM 0.0.60 → 0.0.61. Fix drift cross-borough : le runner (N3) résout désormais bakery-plugin 0.0.21 → document-plugin 0.0.19 (avant : 0.0.20 → 0.0.18). Déclenché depuis cheroliv.com (S-058).
+| 9/10 — runner-gradle: settings.gradle.kts + build.gradle.kts. `buildEnvironment` prouve la chaîne.
+
 | 029
 | 2026-06-19
 | cleanup
@@ -185,3 +191,4 @@
 | 10/10 — test.yml déployé sur codebase, planner, training, waiter, plantuml. 7/8 boroughs couverts.
 
 | 012 | 2026-05-12 | governance | Code Review Globale + règle terminal consommateur | 10/10
+

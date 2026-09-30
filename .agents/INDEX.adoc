@@ -5,9 +5,9 @@ _Regles absolues_ : voir `AGENT.adoc`
 _Ontologie spatiale_ : voir `configuration/.agents/AGENT_GOVERNANCE.adoc`
 _DAG_ : N3 — Orchestration (Regle 4bis)
 
-_Derniere mise a jour_ : 2026-06-19 (Session 029 — Extract publishSite → bakery)
-_Session terminee_ : 029 — Extract publishSite → bakery-gradle plugin. Runner nettoyé de la logique métier.
-_Session a venir_ : 030 — WSM-3 pilot-plugin tests OU EPIC L koog
+_Derniere mise a jour_ : 2026-09-30 (Session 030 — re-pin workspace-catalog 0.0.60 → 0.0.61, chaîne bakery 0.0.21 → document 0.0.19)
+_Session terminee_ : 030 — re-pin catalog 0.0.61 + force BOM 0.0.61 (fix drift cross-borough bakery, maintenu depuis cheroliv S-058).
+_Session a venir_ : 031 — WSM-3 pilot-plugin tests OU EPIC L koog
 
 '''
 == REGLES ABSOLUES (resume)
@@ -124,3 +124,4 @@ _Session a venir_ : 030 — WSM-3 pilot-plugin tests OU EPIC L koog
 | `waiter-gradle` | N2 | Point d'entree unique fonderie (consommateur waiter-plugin)
 | `capsule-gradle` | N2 | Plugin Gradle capsule video (TTS + Playwright + FFmpeg)
 |===
+

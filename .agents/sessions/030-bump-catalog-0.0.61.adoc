@@ -1,0 +1,40 @@
+= Session 030 — re-pin workspace-catalog 0.0.60 → 0.0.61 (chaîne bakery 0.0.21)
+
+:session: 030
+:date: 2026-09-30
+:borough: runner-gradle (New Jersey — N3)
+
+== Contexte
+
+Maintenance cross-borough déclenchée depuis cheroliv.com (S-058). Le runner est
+le maillon N3 par lequel cheroliv exécute les tâches de traduction bakery
+(`./gradlew migrateContentI18n` via `workingDir = file(runnerDir)`).
+
+Audit de la chaîne `cheroliv → runner → bakery → document` : le runner forçait
+`workspace-bom:0.0.60` (workaround) pour aligner le classpath sur le dernier BOM,
+car `bakery-plugin 0.0.20` portait un BOM périmé (0.0.58 → document 0.0.18).
+
+== Contenu
+
+- `settings.gradle.kts` : catalog `0.0.60 → **0.0.61**` (pin unique D4).
+- `build.gradle.kts` : `force("...workspace-bom:0.0.60")` → **`0.0.61`** ; le
+  commentaire documente que bakery 0.0.21 pinne désormais lui-même le BOM 0.0.61
+  (→ document 0.0.19), le force restant une ceinture de sécurité résiliente au
+  pin amont.
+
+== Vérification
+
+- `buildEnvironment` : `bakery-plugin:0.0.21` → `document-plugin:0.0.19` (avant :
+  0.0.20 → 0.0.18).
+- Aucun code Kotlin (runner = 5 tâches Gradle, pas de `src/main/kotlin`, by design).
+
+== Gates
+
+- `buildEnvironment` VERT — preuve de résolution bakery 0.0.21 → document 0.0.19.
+- Zéro test local (règle EAGER : le runner n'a pas de tests, by design).
+
+== Suite
+
+- **bakery 0.0.21** (S-248) re-pinne son BOM en dur → le force du runner n'est
+  plus indispensable mais reste aligné (défense en profondeur).
+- **cheroliv.com** reçoit désormais bakery 0.0.21 → document 0.0.19 via ce runner.
