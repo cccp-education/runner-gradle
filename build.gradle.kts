@@ -9,8 +9,8 @@ buildscript {
             // The bakery-plugin POM pins its build-time workspace-bom; the runner
             // aligns the whole classpath on the latest published BOM so every site
             // baked through N3 resolves the newest constraints (bakery 0.0.22 now
-            // pins BOM 0.0.63 itself → codebase-plugin 0.0.17).
-            force("education.cccp:workspace-bom:0.0.63")
+            // pins BOM 0.0.65 itself → codebase-plugin 0.0.17).
+            force("education.cccp:workspace-bom:0.0.65")
         }
     }
 }
