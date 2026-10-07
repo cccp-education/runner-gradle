@@ -28,3 +28,27 @@ val resolvedConfigPath: String = file("$officePath/sites/$siteName/site.yml").ab
 
 bakery { configPath = resolvedConfigPath }
 
+// S-064 (décision pilote) — OPT-IN single-endpoint LLM override.
+//
+// The site's `ollama:` section is an N0 contract ([contracts.i18n.OllamaConfig])
+// that guards the port range: `portStart must be >= 11437`. A port outside the
+// pool (e.g. 11434, whose account still has quota while the pool is exhausted)
+// cannot be expressed through the YAML. The bakery DSL `ia { }` with
+// `enabled = true` is never overridden by the YAML (IaConfigResolver precedence),
+// and a single endpoint uses the non-pooled LlmService — so it bypasses the
+// contract port guard by construction.
+//
+// Default: absent → the legal pool from `site.yml` is used (backward compat).
+// Usage: `-PllmSingleEndpoint=http://localhost:11434 [-PllmModel=...]`.
+val llmSingleEndpoint: String? = project.findProperty("llmSingleEndpoint") as String?
+if (llmSingleEndpoint != null) {
+    bakery {
+        ia {
+            baseUrl = llmSingleEndpoint
+            modelName = (project.findProperty("llmModel") as String?) ?: "nemotron-3-super:cloud"
+            enabled = true
+            timeout = java.time.Duration.ofSeconds(300)
+        }
+    }
+}
+
