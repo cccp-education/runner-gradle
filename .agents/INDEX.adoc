@@ -5,9 +5,10 @@ _Regles absolues_ : voir `AGENT.adoc`
 _Ontologie spatiale_ : voir `configuration/.agents/AGENT_GOVERNANCE.adoc`
 _DAG_ : N3 — Orchestration (Regle 4bis)
 
-_Derniere mise a jour_ : 2026-09-30 (Session 030 — re-pin workspace-catalog 0.0.60 → 0.0.61, chaîne bakery 0.0.21 → document 0.0.19)
+_Derniere mise a jour_ : 2026-10-08 (Session 032 — re-pin workspace-catalog/BOM 0.0.65 → **0.0.69**, chaîne bakery 0.0.23 → **document 0.0.21** (fix D2 CHE-DIAGRAM échappement `\n`))
+_Session terminee_ : 032 — re-pin catalog/BOM 0.0.69 (document 0.0.21, fix D2 PLT-DIAGRAM-OWNERSHIP US-4-C).
 _Session terminee_ : 030 — re-pin catalog 0.0.61 + force BOM 0.0.61 (fix drift cross-borough bakery, maintenu depuis cheroliv S-058).
-_Session a venir_ : 031 — WSM-3 pilot-plugin tests OU EPIC L koog
+_Session a venir_ : 033 — WSM-3 pilot-plugin tests OU EPIC L koog
 
 '''
 == REGLES ABSOLUES (resume)
