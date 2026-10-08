@@ -11,6 +11,15 @@ buildscript {
             // baked through N3 resolves the newest constraints (bakery 0.0.22 now
             // pins BOM 0.0.65 itself -> codebase-plugin 0.0.17). S-282 : aligned on BOM 0.0.69 (document 0.0.21, fix D2 CHE-DIAGRAM).
             force("education.cccp:workspace-bom:0.0.69")
+            // PLT-DIAGRAM-OWNERSHIP US-5 (S-221) — CHE-DIAGRAM D1 (white diagrams).
+            // The bake classpath pulls `net.sf.saxon:Saxon-HE:11.4` via
+            // `document-plugin -> epubcheck:5.2.1`. PlantUML serialises its SVG
+            // through that Saxon: 11.4 emits `xmlns=''` + hex entities on the root
+            // child elements, which makes the browser stop rendering the SVG
+            // (uniform white). Saxon 9.9.1-7 emits a correct SVG (visible render,
+            // σ≈8700). Proven by fresh re-bake (cache cleared): 11.4 → 0 visible,
+            // 9.9.1-7 → all diagrams visible.
+            force("net.sf.saxon:Saxon-HE:9.9.1-7")
         }
     }
 }
@@ -19,6 +28,20 @@ plugins {
     // MEM-CAT-ROLLOUT-5 (D7/C7) — alias from the published workspace catalog: no hardcoded
     // version anymore, the cross-borough source of truth drives the bakery plugin version.
     alias(ws.plugins.bakery)
+}
+
+// PLT-DIAGRAM-OWNERSHIP US-5 (S-221) — dual-JAR PlantUML.
+// `document-plugin -> plantuml-plugin` (runtime) drags a *standalone*
+// `net.sourceforge.plantuml:plantuml` (version `plantuml-engine`) onto the bake
+// classpath, where it shadows the PlantUML bundled in
+// `asciidoctorj-diagram-plantuml` (1.2026.2). The standalone 1.2026.0 emits SVGs
+// carrying `xmlns=''` → white diagrams on the deployed site (CHE-DIAGRAM D1).
+// Align the standalone on the bundled version so whichever wins the classpath
+// order, the renderer is the same.
+configurations.all {
+    resolutionStrategy {
+        force("net.sourceforge.plantuml:plantuml:1.2026.2")
+    }
 }
 
 val siteName: String = project.findProperty("siteName") as String?

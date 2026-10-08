@@ -1,14 +1,27 @@
 = PROMPT_REPRISE — runner-gradle
-:session: 033
+:session: 034
 :date: 2026-10-08
-:etat: Runner = bakery 0.0.23 (Maven Central) — catalog/BOM workspace 0.0.69 → document 0.0.21 (fix D2 CHE-DIAGRAM). publishSite dans bakery (N2).
-:epic_actif: Aucun — next = WSM-3 pilot-plugin tests OU EPIC L koog
+:etat: Runner = bakery 0.0.23 (Central) — catalog/BOM 0.0.69 → document 0.0.21. Force Saxon 9.9.1-7 (fix D1 CHE-DIAGRAM : SVG blancs).
+:epic_actif: PLT-DIAGRAM-OWNERSHIP (US-5 = D1 résolu ici) — next = WSM-3 pilot-plugin tests OU porter le fix Saxon dans bakery
+
+== Session 033 — force Saxon 9.9.1-7 (fix D1 CHE-DIAGRAM, SVG blancs)
+
+**Cause racine prouvée** : `net.sf.saxon:Saxon-HE:11.4` (tiré par
+`document-plugin → epubcheck:5.2.1`) sérialise les SVG PlantUML avec `xmlns=''`
+(éléments `<title>`/`<defs>`/`<g>`) + entités **hex** (`&#xe8;`) → le navigateur ne
+peint plus → **blanc uniforme**. Saxon **9.9.1-7** produit des entités décimales
+(`&#232;`) et un SVG correct.
+
+* Reproduit en **bake frais** (cache `.asciidoctor/` vidé — sinon le cache masque).
+* `force("net.sf.saxon:Saxon-HE:9.9.1-7")` dans le `buildscript` du runner.
+* Preuve : `xmlns=''` ×0 sur les 5 diagrammes de 0125 ; rendu navigateur σ=8697
+  (visible) vs σ=0 (blanc) avant.
+
+**Reste** : porter le force dans **bakery** (source, pour tout consommateur) +
+garde anti-drift. Le runner suffit pour la CI (elle invoque `engine:./gradlew bake`).
 
 == Session 032 — re-pin catalog/BOM 0.0.69 (fix D2 CHE-DIAGRAM)
 
-* `settings.gradle.kts` : catalog `0.0.65 → 0.0.69`.
-* `build.gradle.kts` : `force("...workspace-bom:0.0.65")` → `0.0.69`.
-* Preuve `buildEnvironment` : bakery-plugin **0.0.23** → document-plugin
-  **0.0.21** (porte le fix `escapeNewlines` de PLT-DIAGRAM-OWNERSHIP US-4-C :
-  un retour-ligne réel du traducteur est re-échappé en `\n`, fin du bloc PlantUML
-  dégradé en listing). Le fix atteint cheroliv.com au prochain déploiement.
+* `settings.gradle.kts` : catalog `0.0.65 → 0.0.69` ; `force("...workspace-bom:0.0.69")`.
+* Preuve `buildEnvironment` : bakery-plugin `0.0.23` → document-plugin `0.0.21`
+  (porte le fix `escapeNewlines` de PLT-DIAGRAM-OWNERSHIP US-4-C).

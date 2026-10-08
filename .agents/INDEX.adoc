@@ -5,7 +5,8 @@ _Regles absolues_ : voir `AGENT.adoc`
 _Ontologie spatiale_ : voir `configuration/.agents/AGENT_GOVERNANCE.adoc`
 _DAG_ : N3 — Orchestration (Regle 4bis)
 
-_Derniere mise a jour_ : 2026-10-08 (Session 032 — re-pin workspace-catalog/BOM 0.0.65 → **0.0.69**, chaîne bakery 0.0.23 → **document 0.0.21** (fix D2 CHE-DIAGRAM échappement `\n`))
+_Derniere mise a jour_ : 2026-10-08 (Session 033 — **US-5 PLT-DIAGRAM-OWNERSHIP : force Saxon 9.9.1-7 (fix D1 CHE-DIAGRAM, diagrammes blancs)**). Cause racine prouvée : `net.sf.saxon:Saxon-HE:11.4` (tiré par `document-plugin → epubcheck:5.2.1`) sérialise les SVG PlantUML avec `xmlns=''` + entités hex → rendu blanc. `force("net.sf.saxon:Saxon-HE:9.9.1-7")` dans le buildscript → `xmlns=''` ×0, rendu navigateur σ=8697 (visible) sur les 5 diagrammes de 0125. Reproduit en bake frais (cache `.asciidoctor/` vidé).)
+_Session terminee_ : 033 — force Saxon 9.9.1-7 (fix D1 CHE-DIAGRAM, SVG blancs).
 _Session terminee_ : 032 — re-pin catalog/BOM 0.0.69 (document 0.0.21, fix D2 PLT-DIAGRAM-OWNERSHIP US-4-C).
 _Session terminee_ : 030 — re-pin catalog 0.0.61 + force BOM 0.0.61 (fix drift cross-borough bakery, maintenu depuis cheroliv S-058).
 _Session a venir_ : 033 — WSM-3 pilot-plugin tests OU EPIC L koog
