@@ -30,20 +30,6 @@ plugins {
     alias(ws.plugins.bakery)
 }
 
-// PLT-DIAGRAM-OWNERSHIP US-5 (S-221) — dual-JAR PlantUML.
-// `document-plugin -> plantuml-plugin` (runtime) drags a *standalone*
-// `net.sourceforge.plantuml:plantuml` (version `plantuml-engine`) onto the bake
-// classpath, where it shadows the PlantUML bundled in
-// `asciidoctorj-diagram-plantuml` (1.2026.2). The standalone 1.2026.0 emits SVGs
-// carrying `xmlns=''` → white diagrams on the deployed site (CHE-DIAGRAM D1).
-// Align the standalone on the bundled version so whichever wins the classpath
-// order, the renderer is the same.
-configurations.all {
-    resolutionStrategy {
-        force("net.sourceforge.plantuml:plantuml:1.2026.2")
-    }
-}
-
 val siteName: String = project.findProperty("siteName") as String?
     ?: throw GradleException("siteName property required. Usage: -PsiteName=<domain>")
 val officePath = System.getenv("OFFICE_PATH") ?: "${System.getProperty("user.home")}/workspace/office"
