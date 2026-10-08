@@ -1,33 +1,14 @@
-= PROMPT_REPRISE — Runner (New Jersey N3)
-:date: 2026-10-06
-:session: 032 — WSM-3 pilot-plugin tests OU EPIC L koog
-:status: A FAIRE
+= PROMPT_REPRISE — runner-gradle
+:session: 033
+:date: 2026-10-08
+:etat: Runner = bakery 0.0.23 (Maven Central) — catalog/BOM workspace 0.0.69 → document 0.0.21 (fix D2 CHE-DIAGRAM). publishSite dans bakery (N2).
+:epic_actif: Aucun — next = WSM-3 pilot-plugin tests OU EPIC L koog
 
-== Livré en session 031
+== Session 032 — re-pin catalog/BOM 0.0.69 (fix D2 CHE-DIAGRAM)
 
-* Re-pin `workspace-catalog` `0.0.63 → 0.0.65` (settings.gradle.kts).
-* `force("...workspace-bom:0.0.63")` → `0.0.65` (build.gradle.kts) — aligné sur
-  bakery 0.0.23 qui pinne désormais lui-même le BOM 0.0.65.
-* Fix drift cross-borough (déclenché cheroliv S-064) : le runner (N3) résout
-  bakery-plugin 0.0.23 → document-plugin 0.0.20.
-* Preuve : `buildEnvironment` → `bakery-plugin:0.0.23` > `document-plugin:0.0.20`
-  > `workspace-bom:0.0.65`.
-
-== Livré en session 030
-
-* Re-pin `workspace-catalog` `0.0.60 → 0.0.61` (settings.gradle.kts).
-* `force("...workspace-bom:0.0.60")` → `0.0.61` (build.gradle.kts) — aligné sur
-  bakery 0.0.21 qui pinne désormais lui-même le BOM 0.0.61.
-
-== Prochaine session (031)
-
-* WSM-3 pilot-plugin tests (workspace-gradle N4)
-* OU EPIC L — Migration koog+langchain4j
-
-== Points d'attention
-
-* Runner : 5 tâches Gradle, pas de src/main/kotlin (by design). Zéro tests.
-* Git autorisé (décision pilote 2026-09-17) — zéro secret commité.
-* build.gradle.kts: bakery { configPath = resolvedConfigPath }, publishSite dependsOn(bake, deploySite)
-* Pin catalogue = source de vérité cross-borough (D4) ; bumper ce pin à chaque
-  release MEMPHIS qui change le bakery consommé.
+* `settings.gradle.kts` : catalog `0.0.65 → 0.0.69`.
+* `build.gradle.kts` : `force("...workspace-bom:0.0.65")` → `0.0.69`.
+* Preuve `buildEnvironment` : bakery-plugin **0.0.23** → document-plugin
+  **0.0.21** (porte le fix `escapeNewlines` de PLT-DIAGRAM-OWNERSHIP US-4-C :
+  un retour-ligne réel du traducteur est re-échappé en `\n`, fin du bloc PlantUML
+  dégradé en listing). Le fix atteint cheroliv.com au prochain déploiement.

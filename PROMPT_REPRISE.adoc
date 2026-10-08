@@ -1,61 +1,14 @@
 = PROMPT_REPRISE — runner-gradle
-:session: 031
-:date: 2026-09-30
-:etat: Runner = bakery 0.0.21 (Maven Central) — catalog workspace 0.0.61. publishSite déplacé dans bakery (N2). CI magic-stick + cheroliv.com OK.
+:session: 033
+:date: 2026-10-08
+:etat: Runner = bakery 0.0.23 (Maven Central) — catalog/BOM workspace 0.0.69 → document 0.0.21 (fix D2 CHE-DIAGRAM). publishSite dans bakery (N2).
 :epic_actif: Aucun — next = WSM-3 pilot-plugin tests OU EPIC L koog
 
-== Session 030 — re-pin catalog 0.0.61 (fix drift cross-borough)
+== Session 032 — re-pin catalog/BOM 0.0.69 (fix D2 CHE-DIAGRAM)
 
-* `settings.gradle.kts` : catalog `0.0.60 → 0.0.61`.
-* `build.gradle.kts` : `force("...workspace-bom:0.0.60")` → `0.0.61`.
-* Preuve : `buildEnvironment` → bakery-plugin **0.0.21** → document-plugin
-  **0.0.19** (avant 0.0.20 → 0.0.18). Déclenché cheroliv S-058.
-* Voir `.agents/PROMPT_REPRISE.adoc` (canonique depuis S-030) +
-  `.agents/sessions/030-bump-catalog-0.0.61.adoc`.
-
-== Contexte (historique)
-
-Runner-gradle build.gradle.kts :
-----
-plugins {
-    id("education.cccp.bakery") version "0.0.1"
-}
-
-val siteName: String = project.findProperty("siteName") as String? ?: throw ...
-val resolvedConfigPath = file("${System.getenv("OFFICE_PATH") ?: ...}/sites/$siteName/site.yml").absolutePath
-
-bakery { configPath = resolvedConfigPath }
-----
-
-settings.gradle.kts : mavenLocal() + mavenCentral() + gradlePluginPortal()
-
-== Reprendre à
-
-. `git status`
-. `./gradlew tasks -PsiteName=magic-stick` — confirmer deploySite + publishSite (provenant bakery) présent
-. WSM-3 — Tests pilot-plugin
-. OU EPIC L — Migration langgraph4j → koog+langchain4j
-
-== ✅ EPIC MEM-CAT-ROLLOUT — Adoption version catalog workspace (S-028, cross-borough MEMPHIS)
-
-_Origine : demande pilote S-028 (workspace-bom) — cas C7 du cadrage MEM-CATALOG
-(hardcode `id(...) version` non couvert). Référentiel : `workspace-bom/BACKLOG.adoc`._
-
-=== US-ROLLOUT-5 — Pin workspace-catalog + alias bakery (TERMINÉ S-031)
-
-*Statut* : ✅ TERMINÉ (S-031)
-
-- [x] `settings.gradle.kts` : `dependencyResolutionManagement { repositories { mavenLocal(); mavenCentral() } + create("ws") from(...0.0.31) }` (pin unique D4)
-  — piège : le runner n'avait PAS de `dependencyResolutionManagement.repositories`
-  (que pluginManagement) → "no repositories are defined" au 1er essai, corrigé.
-- [x] Entrée `[plugins]` bakery ajoutée au toml workspace-bom (D7) + release BOM+catalog 0.0.31 (mavenLocal).
-- [x] `build.gradle.kts` : `id("education.cccp.bakery") version "0.0.9"` → `alias(ws.plugins.bakery)` (hardcode C7 éliminé).
-- [x] Gate : `./gradlew tasks -PsiteName=magic-stick` VERT (deploySite + publishSite présents)
-  + `buildEnvironment` prouve `education.cccp:bakery-plugin:0.0.9` résolu via ws.
-- [ ] CI magic-stick/cheroliv.com : déclencher un run réel pour confirmation deploy.
-
-== Fichiers touchés
-
-- runner-gradle/build.gradle.kts → -PsiteName dynamique + configPath hors DSL
-- runner-gradle/.agents/sessions/026-fix-bakery-multisite.adoc → nouveau
-- office/.github/workflows/deploy-magic-stick.yml → cccp-education/runner-gradle
+* `settings.gradle.kts` : catalog `0.0.65 → 0.0.69`.
+* `build.gradle.kts` : `force("...workspace-bom:0.0.65")` → `0.0.69`.
+* Preuve `buildEnvironment` : bakery-plugin **0.0.23** → document-plugin
+  **0.0.21** (porte le fix `escapeNewlines` de PLT-DIAGRAM-OWNERSHIP US-4-C :
+  un retour-ligne réel du traducteur est re-échappé en `\n`, fin du bloc PlantUML
+  dégradé en listing). Le fix atteint cheroliv.com au prochain déploiement.
