@@ -1,0 +1,27 @@
+= Session 034 — Re-pin catalog 0.0.70 → 0.0.78
+
+_Date_ : 2026-10-11
+_Borough_ : runner-gradle (New Jersey, N3)
+_Type_ : maintenance build (rollout catalog)
+
+== Contexte
+
+Rollout du catalog MEMPHIS `0.0.78` (release S-281 : plugins plantuml 0.0.9 /
+document 0.0.24 / bakery 0.0.26 ; jgit 7.8, diagram 3.2.1, langchain4j 1.22, koog 1.3).
+
+== Livré
+
+* `settings.gradle.kts` : `workspace-catalog:0.0.70 → 0.0.78`.
+* `build.gradle.kts` : `force("education.cccp:workspace-bom:0.0.70 → 0.0.78")`.
+
+== Preuve
+
+* `./gradlew help` **VERT** : la résolution du catalog `0.0.78` + `bakery-plugin 0.0.26`
+  + BOM `0.0.78` configure sans erreur (runner = build-only, pas de source Kotlin).
+* `mavenLocal()` présent dans `pluginManagement`/`dependencyResolutionManagement` →
+  résolution du catalog depuis `~/.m2` (pas d'attente Central).
+
+== Notes
+
+* Force Saxon 9.9.1-7 (fix D1) conservée.
+* Zéro secret, zéro Python.

@@ -1,7 +1,7 @@
 = PROMPT_REPRISE — runner-gradle
-:session: 034
-:date: 2026-10-08
-:etat: Runner = bakery 0.0.23 (Central) — catalog/BOM 0.0.69 → document 0.0.21. Force Saxon 9.9.1-7 (fix D1 CHE-DIAGRAM : SVG blancs).
+:session: 035
+:date: 2026-10-11
+:etat: Runner = bakery 0.0.26 / catalog-BOM 0.0.78 (re-pin S-034). Force Saxon 9.9.1-7 (fix D1 CHE-DIAGRAM : SVG blancs) conservée.
 :epic_actif: PLT-DIAGRAM-OWNERSHIP (US-5 = D1 résolu ici) — next = WSM-3 pilot-plugin tests OU porter le fix Saxon dans bakery
 
 == Session 033 — force Saxon 9.9.1-7 (fix D1 CHE-DIAGRAM, SVG blancs)
