@@ -49,7 +49,13 @@ bakery { configPath = resolvedConfigPath }
 //
 // Default: absent → the legal pool from `site.yml` is used (backward compat).
 // Usage: `-PllmSingleEndpoint=http://localhost:11434 [-PllmModel=...]`.
+//
+// CHE-DIAGRAM D2 / GBL-010 branche B — `-PllmPlantumlModel` routes the `[plantuml]`
+// leaf (diagram *labels*) to a dedicated model, distinct from the prose `llmModel`
+// (e.g. prose `nemotron-3-super:cloud`, diagrams `deepseek-v4-flash:cloud`). Both
+// run on the same endpoint; only the model name differs (bakery `ia.plantumlModelName`).
 val llmSingleEndpoint: String? = project.findProperty("llmSingleEndpoint") as String?
+val llmPlantumlModel: String? = project.findProperty("llmPlantumlModel") as String?
 if (llmSingleEndpoint != null) {
     bakery {
         ia {
@@ -57,7 +63,14 @@ if (llmSingleEndpoint != null) {
             modelName = (project.findProperty("llmModel") as String?) ?: "nemotron-3-super:cloud"
             enabled = true
             timeout = java.time.Duration.ofSeconds(300)
+            plantumlModelName = llmPlantumlModel
         }
+    }
+} else if (llmPlantumlModel != null) {
+    // Pool path (`site.yml -> ollama:`) — a dedicated diagram model still applies;
+    // `IaConfigResolver` preserves it across the pool activation.
+    bakery {
+        ia { plantumlModelName = llmPlantumlModel }
     }
 }
 
