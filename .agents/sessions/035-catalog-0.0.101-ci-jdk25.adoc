@@ -1,0 +1,38 @@
+= Session 035 — catalog/BOM 0.0.100 → 0.0.101 + CI ressuscitée
+:toc:
+
+== Contexte
+
+Suite de la revue de dépendances de cheroliv.com (sessions MEMPHIS 306/307,
+document, bakery). Le runner est le maillon N3 qui applique `bakery` pour le
+site : il épingle le catalogue et force la BOM dans son `buildscript`. Deux
+re-pins successifs ont suivi les releases amont :
+
+* `0.0.100` : `bakery-plugin 0.0.27` (plantuml 0.0.10, codebase 0.0.18) ;
+* `0.0.101` : `document-plugin 0.0.25` + `bakery-plugin 0.0.28`.
+
+== Livrable
+
+* `settings.gradle.kts` : `workspace-catalog 0.0.78 → 0.0.100 → 0.0.101`.
+* `build.gradle.kts` : `force("education.cccp:workspace-bom:…")` aligné
+  (`0.0.78 → 0.0.100 → 0.0.101`), force Saxon 9.9.1-7 conservée.
+* Preuve locale : `./gradlew build -PsiteName=ci` VERT (7 s) ; bake réel
+  cheroliv.com (`-PsiteName=cheroliv.com bake`) VERT avec bakery 0.0.27/0.0.28.
+
+== CI — réparation d'une dette structurelle
+
+Le workflow `Test` était **rouge depuis ≥ 2026-10-11** : il lançait
+`./gradlew build` sans `-PsiteName`, or le buildscript exige la propriété
+(`GradleException`, échec en configuration en ~70 s). Correctif : JDK `24 → 25`
+(les conventions/bakery publiés exigent la toolchain 25) et
+`./gradlew build -PsiteName=ci`. Run vert `0bdc5fc` (Build & Test SUCCESS).
+
+== Ordre DAG
+
+MEMPHIS `0.0.101` (document 0.0.25, bakery 0.0.28) → document 0.0.25 (Central)
+→ bakery 0.0.28 (Central) → **runner** (catalog/BOM 0.0.101, ce document) →
+cheroliv.com.
+
+== Rapport
+
+`.agents/sessions/035-catalog-0.0.101-ci-jdk25.adoc` — CI `0bdc5fc` verte.

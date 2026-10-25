@@ -3,6 +3,12 @@
 
 |===
 | Session | Date | Type | EPIC(s) | Score
+| 035
+| 2026-10-25
+| pub/ops + ci
+| Re-pin catalog/BOM 0.0.100 → 0.0.101 (bakery 0.0.28, document 0.0.25) + **CI ressuscitée** : `./gradlew build` sans `-PsiteName` échouait en configuration depuis ≥ 2026-10-11 ; JDK 24 → 25 + `-PsiteName=ci`. Bake réel cheroliv.com VERT. CI `0bdc5fc` verte.
+| 9/10 — runner-gradle: settings.gradle.kts + build.gradle.kts + .github/workflows/test.yml.
+
 
 | 030
 | 2026-09-30

@@ -1,8 +1,21 @@
 = PROMPT_REPRISE — runner-gradle
-:session: 035
-:date: 2026-10-11
-:etat: Runner = bakery 0.0.26 / catalog-BOM 0.0.78 (re-pin S-034). Force Saxon 9.9.1-7 (fix D1 CHE-DIAGRAM : SVG blancs) conservée.
-:epic_actif: PLT-DIAGRAM-OWNERSHIP (US-5 = D1 résolu ici) — next = WSM-3 pilot-plugin tests OU porter le fix Saxon dans bakery
+:session: 036
+:date: 2026-10-25
+:etat: Runner = bakery 0.0.28 / document 0.0.25 / catalog-BOM 0.0.101 (re-pin S-035). CI `Test` réparée (JDK 25 + `-PsiteName=ci`) — verte `0bdc5fc`.
+:epic_actif: PLT-DIAGRAM-OWNERSHIP (force Saxon conservée) — next = porter le fix Saxon dans bakery OU WSM-3 pilot-plugin tests
+
+== Session 035 — catalog/BOM 0.0.101 + CI ressuscitée
+
+**Deux re-pins** (suite des releases amont) : `0.0.100` = bakery 0.0.27
+(document 0.0.24, plantuml 0.0.10, codebase 0.0.18) puis `0.0.101` = document
+0.0.25 + bakery 0.0.28. `settings.gradle.kts` (catalog) et `build.gradle.kts`
+(`force workspace-bom`) alignés ; force Saxon 9.9.1-7 conservée. Preuve : `build
+-PsiteName=ci` VERT + bake réel cheroliv.com VERT.
+
+**CI** : le workflow `Test` était rouge depuis ≥ 2026-10-11 — `./gradlew build`
+sans `-PsiteName` → `GradleException` en configuration. Correctif : JDK 24 → 25
++ `-PsiteName=ci`. Run vert `0bdc5fc`. Rapport
+`.agents/sessions/035-catalog-0.0.101-ci-jdk25.adoc`.
 
 == Session 033 — force Saxon 9.9.1-7 (fix D1 CHE-DIAGRAM, SVG blancs)
 
