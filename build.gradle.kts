@@ -8,9 +8,10 @@ buildscript {
             force("org.jetbrains:annotations:26.0.2-1")
             // The bakery-plugin POM pins its build-time workspace-bom; the runner
             // aligns the whole classpath on the latest published BOM so every site
-            // baked through N3 resolves the newest constraints (bakery 0.0.22 now
-            // pins BOM 0.0.65 itself -> codebase-plugin 0.0.17). S-282 : aligned on BOM 0.0.69 (document 0.0.21, fix D2 CHE-DIAGRAM).
-            force("education.cccp:workspace-bom:0.0.78")
+            // baked through N3 resolves the newest constraints (bakery 0.0.27 now
+            // pins BOM 0.0.100 itself -> document 0.0.24, plantuml 0.0.10,
+            // codebase-plugin 0.0.18).
+            force("education.cccp:workspace-bom:0.0.100")
             // PLT-DIAGRAM-OWNERSHIP US-5 (S-221) — CHE-DIAGRAM D1 (white diagrams).
             // The bake classpath pulls `net.sf.saxon:Saxon-HE:11.4` via
             // `document-plugin -> epubcheck:5.2.1`. PlantUML serialises its SVG
