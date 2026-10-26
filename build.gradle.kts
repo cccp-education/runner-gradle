@@ -11,7 +11,7 @@ buildscript {
             // baked through N3 resolves the newest constraints (bakery 0.0.27 now
             // pins BOM 0.0.100 itself -> document 0.0.24, plantuml 0.0.10,
             // codebase-plugin 0.0.18).
-            force("education.cccp:workspace-bom:0.0.103")
+            force("education.cccp:workspace-bom:0.0.104")
             // PLT-DIAGRAM-OWNERSHIP US-5 (S-221) — CHE-DIAGRAM D1 (white diagrams).
             // The bake classpath pulls `net.sf.saxon:Saxon-HE:11.4` via
             // `document-plugin -> epubcheck:5.2.1`. PlantUML serialises its SVG
