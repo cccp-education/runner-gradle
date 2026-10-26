@@ -1,0 +1,60 @@
+= BACKLOG — Runner Gradle (N3)
+:description: EPICs ouverts du portefeuille runner — source de vérité locale
+:toc: left
+:toclevels: 3
+:icons: font
+
+== 🟡 EPIC RUN-I18N-ARTIFACT — Le rapport de convergence mesure l'artefact (CADRÉ S-077, revue i18n S-263)
+
+*Source* : revue externe `foundry/public/bakery-gradle/bakery-plugin/.agents/i18n_review.adoc`
+(S-263) ; gate d'artefact cheroliv.com S-077 (`ArtifactIntegrity`,
+`reportArtifactIntegrity`).
+
+*Constat* : `reportConvergence` compte des **blocs du store** (`PENDING`/`TRANSLATED`)
+et peut annoncer « 0 PENDING / 0 cassé » alors que l'artefact publié contient des
+refus LLM, des macros perdues ou des duplications. C'est le faux vert que la revue
+a identifié : l'orchestration N3 doit exposer la mesure de l'artefact, pas seulement
+l'état du travail.
+
+*Boundary* : runner est un **consommateur terminal** — il n'implémente aucune règle
+métier. Il orchestre les rapports produits par les boroughs (site, document,
+bakery, plantuml) et refuse un déploiement non prouvé.
+
+*DAG* : `cheroliv.com (ArtifactIntegrityContract)` + `MEMPHIS/CB/DOC/BKY/PLT`
+→ `runner (RUN-I18N-ARTIFACT)`. Aucun import N3 → N0/N1/N2.
+
+[cols="1,4,1,2", options="header"]
+|===
+| US | Description | Pts | Statut
+
+| RUN-I18N-1
+| **Tâche `reportTranslationArtifact`** — orchestre le rapport d'artefact du site
+  consommateur (cheroliv.com d'abord) : `build/artifact-integrity.adoc` +
+  compteurs par langue/kind/propriétaire ; zéro compteur de store
+| 1
+| 🟡 À FAIRE
+
+| RUN-I18N-2
+| **Gate de déploiement** — `deploySite` refuse si le rapport d'artefact contient
+  un défaut **non documenté** (baseline absente ou dépassée) ; le job CI de deploy
+  exécute la mesure avant publication
+| 2
+| 🟡 À FAIRE
+
+| RUN-I18N-3
+| **Rapport de convergence réécrit** — `reportConvergence` agrège le rapport
+  d'artefact + l'arbre `translation-tree` et imprime les nœuds non verts avec leur
+  propriétaire (document/bakery/plantuml), jamais un pourcentage de store
+| 1
+| 🟡 À FAIRE
+
+| RUN-I18N-4
+| **Preuve** — BDD/FT sur un corpus synthétique (refus + macro perdue) : le
+  rapport et la gate échouent ; le corpus réel documenté passe
+| 1
+| 🟡 À FAIRE
+|===
+
+*Total* : 4 US ~5 pts. *Dépend de* : `cheroliv.com S-077` (✅),
+`GBL-010` G-4 (✅). *Doc* : `.agents/i18n_review.adoc` (S-263),
+`CADRAGE_EPIC_GBL_010_ARBRE_TRADUCTION_SITE.adoc`.
