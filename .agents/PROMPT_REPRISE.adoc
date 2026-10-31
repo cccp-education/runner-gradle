@@ -1,7 +1,7 @@
 = PROMPT_REPRISE — runner-gradle
-:session: 036
-:date: 2026-10-25
-:etat: Runner = bakery 0.0.28 / document 0.0.25 / catalog-BOM 0.0.101 (re-pin S-035). CI `Test` réparée (JDK 25 + `-PsiteName=ci`) — verte `0bdc5fc`.
+:session: 037
+:date: 2026-10-31
+:etat: S-036 (2026-10-31) — pin catalog/BOM **0.0.111** : résout bakery **0.0.30** + document **0.0.26** + plantuml **0.0.14** + i18n-contracts **0.0.5** (vérifié `buildEnvironment -PsiteName=cheroliv.com`). Le pin 0.0.109 ne portait que bakery à jour ; toute la chaîne i18n était derrière.
 :epic_actif: PLT-DIAGRAM-OWNERSHIP (force Saxon conservée) — next = porter le fix Saxon dans bakery OU WSM-3 pilot-plugin tests
 
 == Session 035 — catalog/BOM 0.0.101 + CI ressuscitée

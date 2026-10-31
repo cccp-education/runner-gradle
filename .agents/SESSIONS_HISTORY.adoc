@@ -199,3 +199,12 @@
 | 012 | 2026-05-12 | governance | Code Review Globale + règle terminal consommateur | 10/10
 | 034 | 2026-10-11 | maintenance build | Re-pin catalog 0.0.70 → 0.0.78 (rollout MEMPHIS 0.0.78 : plantuml 0.0.9 / document 0.0.24 / bakery 0.0.26 ; jgit 7.8, diagram 3.2.1, langchain4j 1.22, koog 1.3). `./gradlew help` VERT. Force Saxon 9.9.1-7 conservée. | 10/10 |
 
+
+== Session 036 — 2026-10-31 — pin catalog/BOM 0.0.111 (chaîne i18n complète)
+
+* `workspace-catalog`/`workspace-bom` `0.0.109 → 0.0.111`.
+* Résolution vérifiée par `buildEnvironment -PsiteName=cheroliv.com` :
+  bakery **0.0.30**, document **0.0.26**, plantuml **0.0.14**, i18n-contracts **0.0.5**.
+* Le pin 0.0.109 ne portait que bakery à jour (document 0.0.25, plantuml 0.0.13,
+  i18n-contracts 0.0.4) : toute la chaîne i18n des sites était derrière.
+* CI `Test` verte.
