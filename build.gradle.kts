@@ -11,12 +11,10 @@ buildscript {
             // baked through N3 resolves the newest constraints (bakery 0.0.27 now
             // pins BOM 0.0.100 itself -> document 0.0.24, plantuml 0.0.10,
             // codebase-plugin 0.0.18).
-            force("education.cccp:workspace-bom:0.0.111")
-            // S-083 P1 (plantuml 0.0.15) — the catalog 0.0.111 still declares
-            // plantuml 0.0.14; the pilot release overrides it until MEMPHIS
-            // publishes the aligned catalog. Fix: mask the literal \n escape so
-            // every label segment is translated.
-            force("education.cccp:plantuml-plugin:0.0.15")
+            // S-084 — the catalog 0.0.121 declares document-plugin 0.0.29 (P2,
+            // structural delta) and plantuml-plugin 0.0.16 (every diagram type in
+            // the syntax gate). No plugin override is needed anymore.
+            force("education.cccp:workspace-bom:0.0.121")
             // PLT-DIAGRAM-OWNERSHIP US-5 (S-221) — CHE-DIAGRAM D1 (white diagrams).
             // The bake classpath pulls `net.sf.saxon:Saxon-HE:11.4` via
             // `document-plugin -> epubcheck:5.2.1`. PlantUML serialises its SVG
