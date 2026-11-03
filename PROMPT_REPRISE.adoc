@@ -1,8 +1,8 @@
 = PROMPT_REPRISE — runner-gradle
-:session: 034
-:date: 2026-10-08
-:etat: Runner = bakery 0.0.23 (Central) — catalog/BOM 0.0.69 → document 0.0.21. Force Saxon 9.9.1-7 (fix D1 CHE-DIAGRAM : SVG blancs).
-:epic_actif: PLT-DIAGRAM-OWNERSHIP (US-5 = D1 résolu ici) — next = WSM-3 pilot-plugin tests OU porter le fix Saxon dans bakery
+:session: 036
+:date: 2026-11-03
+:etat: Runner = bakery 0.0.32 (catalog/BOM 0.0.124) — déploiement i18n en matrice + `pagefind validateSearchIndex`. Force Saxon 9.9.1-7 conservée.
+:epic_actif: BKY-SEARCH (consommation N2) + PLT-DIAGRAM-OWNERSHIP — next = porter le force Saxon dans bakery (`BKY-PLT-3`) OU WSM-3 pilot-plugin.
 
 == Session 033 — force Saxon 9.9.1-7 (fix D1 CHE-DIAGRAM, SVG blancs)
 

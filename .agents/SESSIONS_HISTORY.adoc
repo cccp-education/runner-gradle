@@ -3,6 +3,12 @@
 
 |===
 | Session | Date | Type | EPIC(s) | Score
+| 036
+| 2026-11-03
+| build/ops
+| Pins catalog/BOM 0.0.123 (bakery 0.0.31) puis 0.0.124 (bakery 0.0.32, `wasm:null`) ; déploiement i18n en matrice avec `pagefind validateSearchIndex` ; site cheroliv `41587758121` (10m20s, 23 jobs). Force Saxon 9.9.1-7 conservée.
+| 9/10 — runner-gradle: settings.gradle.kts + build.gradle.kts.
+
 | 035
 | 2026-10-25
 | pub/ops + ci

@@ -1,0 +1,30 @@
+= Session 036 — Pins catalog/BOM 0.0.123/0.0.124
+:date: 2026-11-03
+:statut: TERMINÉ
+
+== Mission
+
+Consommer les releases MEMPHIS 0.0.123 (`bakery-plugin 0.0.31`) puis 0.0.124
+(`0.0.32`, `wasm:null`) et fournir aux déploiements de sites le moteur Pagefind
+et le garde `validateSearchIndex`.
+
+== Livré
+
+* `settings.gradle.kts` : `workspace-catalog:0.0.123` puis `0.0.124`.
+* `build.gradle.kts` : `force(workspace-bom:0.0.123)` puis `0.0.124`.
+* Force Saxon `9.9.1-7` conservée (D1 CHE-DIAGRAM).
+* Le job de déploiement i18n exécute `pagefind validateSearchIndex` sur l'arbre
+  assemblé puis `deploySite`.
+
+== Preuves
+
+* Pins `0.0.123` : commit `25ecd64` ; `0.0.124` : commit `5220065`.
+* Consommation réelle : déploiement cheroliv.com `41587758121` ✅ (matrice,
+  10m20s, 23 jobs, recherche FR/EN/JA/DE).
+* Aucun test ajouté/modifié (N3 sans source ni suite de tests ; preuve = CI du
+  site consommateur).
+
+== Reste
+
+Porter le force Saxon dans bakery (source pour tout consommateur) et la garde
+anti-drift — `BKY-PLT-3` (bakery).

@@ -2,6 +2,13 @@
 
 _Note_ : Engine n'a ni src/main/kotlin/, ni src/test/, ni framework de test. La charge de la preuve est sur les plugins consommateur (N0→N2), pas sur l'orchestrateur (N3). Règle AGENT.adoc §4.
 
+== Session 036 (2026-11-03) — pins catalog/BOM 0.0.123/0.0.124
+
+Aucun test ajouté/modifié : N3 n'a ni source ni suite de tests (la charge de la
+preuve est sur les plugins N0→N2). La consommation est prouvée par le
+déploiement du site consommateur cheroliv.com `41587758121` (matrice, 23 jobs,
+recherche FR/EN/JA/DE) et par la résolution `bakery-plugin 0.0.32` du runner.
+
 == État Global — Tests Cross-Boroughs (2026-05-19)
 
 [cols="2,3,2,3", options="header"]
