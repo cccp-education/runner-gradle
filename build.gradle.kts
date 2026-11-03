@@ -14,7 +14,7 @@ buildscript {
             // S-084 — the catalog 0.0.121 declares document-plugin 0.0.29 (P2,
             // structural delta) and plantuml-plugin 0.0.16 (every diagram type in
             // the syntax gate). No plugin override is needed anymore.
-            force("education.cccp:workspace-bom:0.0.123")
+            force("education.cccp:workspace-bom:0.0.124")
             // PLT-DIAGRAM-OWNERSHIP US-5 (S-221) — CHE-DIAGRAM D1 (white diagrams).
             // The bake classpath pulls `net.sf.saxon:Saxon-HE:11.4` via
             // `document-plugin -> epubcheck:5.2.1`. PlantUML serialises its SVG
