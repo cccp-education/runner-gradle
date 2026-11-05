@@ -1,27 +1,31 @@
 = PROMPT_REPRISE — runner-gradle
-:session: 036
-:date: 2026-11-03
-:etat: Runner = bakery 0.0.32 (catalog/BOM 0.0.124) — déploiement i18n en matrice + `pagefind validateSearchIndex`. Force Saxon 9.9.1-7 conservée.
-:epic_actif: BKY-SEARCH (consommation N2) + PLT-DIAGRAM-OWNERSHIP — next = porter le force Saxon dans bakery (`BKY-PLT-3`) OU WSM-3 pilot-plugin.
+:session: 037
+:date: 2026-11-05
+:etat: S-037 — pins `workspace-catalog/BOM 0.0.125` (bakery 0.0.33) puis **0.0.128** (latest local boroughs) ; C6 local 0.0.129 en working tree, **reverté** avant clôture ; déploiement i18n en matrice inchangé.
+:epic_actif: BKY-SEARCH (consommation N2) + PLT-DIAGRAM-OWNERSHIP — force Saxon 9.9.1-7 conservée.
+:epic_suivant: re-pin 0.0.129 quand Central rouvrira (document 0.0.31, bakery 0.0.34) ; `BKY-PLT-3` reste test-only côté bakery.
 
-== Session 033 — force Saxon 9.9.1-7 (fix D1 CHE-DIAGRAM, SVG blancs)
+== Acquis S-037 (2026-11-05)
 
-**Cause racine prouvée** : `net.sf.saxon:Saxon-HE:11.4` (tiré par
-`document-plugin → epubcheck:5.2.1`) sérialise les SVG PlantUML avec `xmlns=''`
-(éléments `<title>`/`<defs>`/`<g>`) + entités **hex** (`&#xe8;`) → le navigateur ne
-peint plus → **blanc uniforme**. Saxon **9.9.1-7** produit des entités décimales
-(`&#232;`) et un SVG correct.
+* Pin **0.0.125** (commit `2c90584`) : bakery 0.0.33 (P3 `reopenDivergent`) +
+  document 0.0.30 + plantuml 0.0.16 + codebase 0.0.18.
+* Pin **0.0.128** (commit `aab55a3`) : dernière catalogue/BOM publiée ; mêmes
+  versions borough, conventions 0.0.14.
+* **C6 local** : catalogue/BOM 0.0.129 (document 0.0.31, bakery 0.0.34) en
+  **working tree** pour le pilote `en` ; **reverté** avant clôture (Central
+  bloqué jusqu'au 2026-12-01). Le site a utilisé ce setup local via `runnerDir`.
+* Force Saxon 9.9.1-7 conservée (fix SVG blancs).
 
-* Reproduit en **bake frais** (cache `.asciidoctor/` vidé — sinon le cache masque).
-* `force("net.sf.saxon:Saxon-HE:9.9.1-7")` dans le `buildscript` du runner.
-* Preuve : `xmlns=''` ×0 sur les 5 diagrammes de 0125 ; rendu navigateur σ=8697
-  (visible) vs σ=0 (blanc) avant.
+== Mission session 038
 
-**Reste** : porter le force dans **bakery** (source, pour tout consommateur) +
-garde anti-drift. Le runner suffit pour la CI (elle invoque `engine:./gradlew bake`).
+. Au **2026-12-01**, re-pin `workspace-catalog/BOM 0.0.129` (document 0.0.31,
+   bakery 0.0.34) et vérifier `buildEnvironment -PsiteName=cheroliv.com`.
+. Vérifier que le déploiement i18n exécute toujours `pagefind validateSearchIndex`
+   et que le pilote C6 n'a pas changé la matrice.
+. `BKY-PLT-4` (corpus D2) reste côté bakery/metered.
 
-== Session 032 — re-pin catalog/BOM 0.0.69 (fix D2 CHE-DIAGRAM)
+== Rappels
 
-* `settings.gradle.kts` : catalog `0.0.65 → 0.0.69` ; `force("...workspace-bom:0.0.69")`.
-* Preuve `buildEnvironment` : bakery-plugin `0.0.23` → document-plugin `0.0.21`
-  (porte le fix `escapeNewlines` de PLT-DIAGRAM-OWNERSHIP US-4-C).
+* Local = Build, Tests = CI : `./gradlew tasks`/`buildEnvironment` seulement.
+* Ne pas commiter de pin vers une version non publiée sur Central.
+* Ne pas lire les fichiers gitignorés.

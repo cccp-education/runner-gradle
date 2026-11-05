@@ -1,0 +1,16 @@
+= Archive des tâches complétées — Novembre 2026
+
+== Session 037 — 2026-11-05 — pins catalog/BOM 0.0.125 puis 0.0.128
+
+=== Fait
+* Pin `workspace-catalog/BOM 0.0.125` (commit `2c90584`) : bakery 0.0.33,
+  document 0.0.30, plantuml 0.0.16, codebase 0.0.18.
+* Pin `workspace-catalog/BOM 0.0.128` (commit `aab55a3`) : dernière catalogue
+  publiée, conventions 0.0.14.
+* C6 local : catalogue/BOM 0.0.129 (document 0.0.31, bakery 0.0.34) en working
+  tree pour le pilote `en`, reverté avant clôture.
+* Force Saxon 9.9.1-7 conservée ; déploiement i18n matrice inchangé.
+
+=== Prochaine session
+* Au 2026-12-01 : re-pin 0.0.129 (document 0.0.31, bakery 0.0.34) et vérifier
+  `buildEnvironment -PsiteName=cheroliv.com`.

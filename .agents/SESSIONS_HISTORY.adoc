@@ -214,3 +214,13 @@
 * Le pin 0.0.109 ne portait que bakery à jour (document 0.0.25, plantuml 0.0.13,
   i18n-contracts 0.0.4) : toute la chaîne i18n des sites était derrière.
 * CI `Test` verte.
+
+== Session 037 — 2026-11-05 — pins catalog/BOM 0.0.125 puis 0.0.128
+
+* `workspace-catalog/BOM 0.0.125` (commit `2c90584`) : bakery 0.0.33 (P3
+  `reopenDivergent`), document 0.0.30, plantuml 0.0.16, codebase 0.0.18.
+* `workspace-catalog/BOM 0.0.128` (commit `aab55a3`) : dernière catalogue/BOM
+  publiée, conventions 0.0.14.
+* C6 local : catalogue/BOM 0.0.129 (document 0.0.31, bakery 0.0.34) en working
+  tree pour le pilote `en`, **reverté** avant clôture (Central au 2026-12-01).
+* Force Saxon 9.9.1-7 conservée. Déploiement i18n (matrice) inchangé.
