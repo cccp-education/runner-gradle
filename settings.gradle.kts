@@ -25,5 +25,4 @@ pluginManagement.resolutionStrategy.eachPlugin {
     }
 }
 
-
 rootProject.name = "runner-gradle"
