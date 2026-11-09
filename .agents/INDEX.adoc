@@ -132,3 +132,7 @@ _Session a venir_ : 033 — WSM-3 pilot-plugin tests OU EPIC L koog
 | `capsule-gradle` | N2 | Plugin Gradle capsule video (TTS + Playwright + FFmpeg)
 |===
 
+
+== Session 037 — JitPack mirror (CNV-16)
+
+Aucune publication JitPack (pas de publication Maven) ; settings shim uniquement. JitPack : n/a.

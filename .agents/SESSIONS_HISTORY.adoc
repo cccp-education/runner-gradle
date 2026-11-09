@@ -224,3 +224,9 @@
 * C6 local : catalogue/BOM 0.0.129 (document 0.0.31, bakery 0.0.34) en working
   tree pour le pilote `en`, **reverté** avant clôture (Central au 2026-12-01).
 * Force Saxon 9.9.1-7 conservée. Déploiement i18n (matrice) inchangé.
+
+== Session 037 — JitPack mirror (CNV-16) — 2026-11-09
+
+Aucune publication JitPack (pas de publication Maven) ; settings shim uniquement. JitPack : n/a. Shim `useModule` pour
+`education.cccp.build.*` (tag JitPack `0.0.15`). Rapport
+`.agents/sessions/037-jitpack-mirror.adoc`.
