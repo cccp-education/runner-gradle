@@ -14,3 +14,10 @@
 === Prochaine session
 * Au 2026-12-01 : re-pin 0.0.129 (document 0.0.31, bakery 0.0.34) et vérifier
   `buildEnvironment -PsiteName=cheroliv.com`.
+
+== Session 038 — bakery 0.0.38 depuis JitPack (2026-11-10)
+
+* Shim `useModule` : `education.cccp.bakery` → JitPack `bakery-plugin 0.0.38`
+  (BKY-CI-MIRROR / `pushCiMirror`).
+* `buildEnvironment` → 0.0.38 ; `help -PsiteName=cheroliv.com` VERT.
+* Rapport `.agents/sessions/038-bakery-jitpack-shim.adoc`.

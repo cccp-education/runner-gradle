@@ -230,3 +230,11 @@
 Aucune publication JitPack (pas de publication Maven) ; settings shim uniquement. JitPack : n/a. Shim `useModule` pour
 `education.cccp.build.*` (tag JitPack `0.0.15`). Rapport
 `.agents/sessions/037-jitpack-mirror.adoc`.
+
+== Session 038 — bakery 0.0.38 depuis JitPack — 2026-11-10
+
+Shim `useModule` : `education.cccp.bakery` →
+`com.github.cccp-education.bakery-gradle:bakery-plugin:0.0.38` (JitPack).
+Le catalog Central 0.0.128 déclare 0.0.33 ; la bakery BKY-CI-MIRROR est servie
+par JitPack (0.0.36→0.0.38). Vérifié `buildEnvironment` → 0.0.38. Rapport
+`.agents/sessions/038-bakery-jitpack-shim.adoc`.

@@ -5,6 +5,8 @@ _Regles absolues_ : voir `AGENT.adoc`
 _Ontologie spatiale_ : voir `configuration/.agents/AGENT_GOVERNANCE.adoc`
 _DAG_ : N3 — Orchestration (Regle 4bis)
 
+_Derniere mise a jour_ : 2026-11-10 (Session 038 — shim `useModule` : `education.cccp.bakery` → **JitPack `bakery-plugin 0.0.38`** (BKY-CI-MIRROR / `pushCiMirror`) ; `buildEnvironment` VERT. Rapport `.agents/sessions/038-bakery-jitpack-shim.adoc`.)
+
 _Derniere mise a jour_ : 2026-11-05 (Session 037 — pins `workspace-catalog/BOM` **0.0.125** puis **0.0.128** (bakery 0.0.33, document 0.0.30, plantuml 0.0.16, codebase 0.0.18) ; C6 local 0.0.129 en working tree, reverté avant clôture ; force Saxon 9.9.1-7 conservée. Rapports `.agents/sessions/` + `.agents/SESSIONS_HISTORY.adoc`.)
 _Derniere mise a jour_ : 2026-11-03 (Session 036 — **pins catalog/BOM 0.0.123/0.0.124** (bakery 0.0.31/0.0.32, `wasm:null`) ; le déploiement i18n exécute `pagefind validateSearchIndex` sur l'arbre assemblé ; site cheroliv déployé `41587758121` (matrice 10m20s, 23 jobs). Force Saxon 9.9.1-7 conservée. Rapport `.agents/sessions/036-catalog-0.0.123-0.0.124.adoc`.)
 _Derniere mise a jour (antérieure)_ : 2026-10-25 (Session 035 — **re-pin catalog/BOM 0.0.100 → 0.0.101** (bakery 0.0.28, document 0.0.25) + **CI ressuscitée** : `./gradlew build` sans `-PsiteName` échouait en configuration depuis ≥ 2026-10-11 → JDK 25 + `-PsiteName=ci`. `build -PsiteName=ci` VERT, bake réel cheroliv.com VERT, CI `0bdc5fc` verte. Rapport `.agents/sessions/035-catalog-0.0.101-ci-jdk25.adoc`.)

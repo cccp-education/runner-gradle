@@ -1,27 +1,27 @@
 = PROMPT_REPRISE — runner-gradle
-:session: 037
-:date: 2026-11-05
-:etat: S-037 — pins `workspace-catalog/BOM 0.0.125` (bakery 0.0.33) puis **0.0.128** (latest local boroughs) ; C6 local 0.0.129 en working tree, **reverté** avant clôture ; déploiement i18n en matrice inchangé.
+:session: 039
+:date: 2026-11-10
+:etat: S-038 — shim `useModule` : `education.cccp.bakery` → JitPack `bakery-plugin 0.0.38` (BKY-CI-MIRROR / pushCiMirror) ; `buildEnvironment` VERT.
 :epic_actif: BKY-SEARCH (consommation N2) + PLT-DIAGRAM-OWNERSHIP — force Saxon 9.9.1-7 conservée.
-:epic_suivant: re-pin 0.0.129 quand Central rouvrira (document 0.0.31, bakery 0.0.34) ; `BKY-PLT-3` reste test-only côté bakery.
+:epic_suivant: re-pin `workspace-catalog/BOM 0.0.129` au reset Central (2026-12-01) ; le shim JitPack reste prioritaire pour bakery.
 
-== Acquis S-037 (2026-11-05)
+== Acquis S-038 (2026-11-10)
 
-* Pin **0.0.125** (commit `2c90584`) : bakery 0.0.33 (P3 `reopenDivergent`) +
-  document 0.0.30 + plantuml 0.0.16 + codebase 0.0.18.
-* Pin **0.0.128** (commit `aab55a3`) : dernière catalogue/BOM publiée ; mêmes
-  versions borough, conventions 0.0.14.
-* **C6 local** : catalogue/BOM 0.0.129 (document 0.0.31, bakery 0.0.34) en
-  **working tree** pour le pilote `en` ; **reverté** avant clôture (Central
-  bloqué jusqu'au 2026-12-01). Le site a utilisé ce setup local via `runnerDir`.
-* Force Saxon 9.9.1-7 conservée (fix SVG blancs).
+* Le catalog Central `0.0.128` déclare `bakery-plugin = 0.0.33`. La bakery
+  `BKY-CI-MIRROR` (tâche `pushCiMirror`) est publiée sur **JitPack** en
+  `0.0.36` → `0.0.37` → **`0.0.38`** (tags CNV-16).
+* `settings.gradle.kts` : `pluginManagement.resolutionStrategy.eachPlugin`
+  redirige `education.cccp.bakery` →
+  `com.github.cccp-education.bakery-gradle:bakery-plugin:0.0.38`, en plus du
+  shim `education.cccp.build.*` (conventions JitPack `0.0.15`).
+* Vérifié : `./gradlew help -PsiteName=cheroliv.com` BUILD SUCCESSFUL ;
+  `buildEnvironment` → `bakery-plugin:0.0.38`.
 
-== Mission session 038
+== Mission session 039
 
-. Au **2026-12-01**, re-pin `workspace-catalog/BOM 0.0.129` (document 0.0.31,
-   bakery 0.0.34) et vérifier `buildEnvironment -PsiteName=cheroliv.com`.
-. Vérifier que le déploiement i18n exécute toujours `pagefind validateSearchIndex`
-   et que le pilote C6 n'a pas changé la matrice.
+. Au **2026-12-01**, re-pin `workspace-catalog/BOM 0.0.129` (Central) ; ne pas
+   supprimer le shim JitPack tant que la bakery n'est pas sur Central.
+. Vérifier que le déploiement i18n exécute toujours `pagefind validateSearchIndex`.
 . `BKY-PLT-4` (corpus D2) reste côté bakery/metered.
 
 == Rappels

@@ -1,0 +1,26 @@
+= Session 038 — bakery 0.0.38 depuis JitPack (shim useModule)
+:date: 2026-11-10
+:statut: ✅ — runner résout bakery 0.0.38 (JitPack) ; `buildEnvironment` VERT
+
+== Demande pilote
+
+La cible de publication est **JitPack** (ni Sonatype Central, ni Gradle Plugin
+Portal). Le catalog Central 0.0.128 déclare `bakery-plugin = 0.0.33` ; la bakery
+`BKY-CI-MIRROR` (`pushCiMirror`) est publiée sur JitPack en **0.0.38**.
+
+== Modification
+
+* `settings.gradle.kts` : `pluginManagement.resolutionStrategy.eachPlugin`
+  redirige `education.cccp.bakery` →
+  `com.github.cccp-education.bakery-gradle:bakery-plugin:0.0.38` (JitPack), en
+  plus du shim existant `education.cccp.build.*`.
+* Vérifié : `OFFICE_PATH=… ./gradlew help -PsiteName=cheroliv.com` →
+  BUILD SUCCESSFUL ; `buildEnvironment` montre `bakery-plugin:0.0.38`.
+* Conséquence : la tâche `pushCiMirror` (bakery 0.0.38) est disponible pour
+  amorcer les miroirs runners.
+
+== Prochaine session
+
+* Task `pushCiMirror` opérationnelle (4 miroirs amorcés côté office).
+* Au 2026-12-01 : re-pin `workspace-catalog/BOM 0.0.129` (Central) ; le shim
+  JitPack reste prioritaire pour `education.cccp.bakery`.

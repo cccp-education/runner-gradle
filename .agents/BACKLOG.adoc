@@ -4,6 +4,8 @@
 :toclevels: 3
 :icons: font
 
+_Dernière mise à jour : 2026-11-10 (S-038 — shim JitPack `education.cccp.bakery` → `bakery-plugin 0.0.38`, BKY-CI-MIRROR / `pushCiMirror`.)_
+
 == 🟡 EPIC RUN-I18N-ARTIFACT — Le rapport de convergence mesure l'artefact (CADRÉ S-077, revue i18n S-263)
 
 *Source* : revue externe `foundry/public/bakery-gradle/bakery-plugin/.agents/i18n_review.adoc`
