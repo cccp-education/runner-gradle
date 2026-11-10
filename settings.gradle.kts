@@ -20,8 +20,14 @@ dependencyResolutionManagement {
 // the canonical plugin declarations may stay on the released version.
 pluginManagement.repositories.maven("https://jitpack.io")
 pluginManagement.resolutionStrategy.eachPlugin {
-    if (requested.id.id.startsWith("education.cccp.build.")) {
-        useModule("com.github.cccp-education.conventions-gradle:conventions-plugin:0.0.15")
+    when {
+        requested.id.id.startsWith("education.cccp.build.") ->
+            useModule("com.github.cccp-education.conventions-gradle:conventions-plugin:0.0.15")
+
+        // CNV-16 — bakery 0.0.36 (BKY-CI-MIRROR / pushCiMirror) is served from
+        // JitPack (Central quota blocked, Portal not the pilot target).
+        requested.id.id == "education.cccp.bakery" ->
+            useModule("com.github.cccp-education.bakery-gradle:bakery-plugin:0.0.36")
     }
 }
 
