@@ -22,7 +22,7 @@ pluginManagement.repositories.maven("https://jitpack.io")
 pluginManagement.resolutionStrategy.eachPlugin {
     when {
         requested.id.id.startsWith("education.cccp.build.") ->
-            useModule("com.github.cccp-education.conventions-gradle:conventions-plugin:0.0.15")
+            useModule("com.github.cccp-education.conventions-gradle:conventions-plugin:0.0.16")
 
         // CNV-16 — bakery 0.0.36 (BKY-CI-MIRROR / pushCiMirror) is served from
         // JitPack (Central quota blocked, Portal not the pilot target).
