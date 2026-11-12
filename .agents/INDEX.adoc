@@ -20,7 +20,7 @@ _Session a venir_ : 033 — WSM-3 pilot-plugin tests OU EPIC L koog
 '''
 == REGLES ABSOLUES (resume)
 
-=== 1. COMMITS/GIT — INTERDICTION FORMELLE sans permission
+=== 1. COMMITS/GIT — AUTORISÉS (décision pilote 2026-11-11 : tous repos publics)
 === 2. PAS DE publishToMavenLocal — runner-gradle n'est pas un plugin
 === 3. SECRETS via configuration/ — jamais en dur dans build.gradle.kts
 === 4. DAG N3 — jamais importe par N0/N1/N2
