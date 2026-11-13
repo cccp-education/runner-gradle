@@ -2,16 +2,14 @@ pluginManagement.repositories.mavenLocal()
 pluginManagement.repositories.mavenCentral()
 pluginManagement.repositories.gradlePluginPortal()
 
-// ── MEM-CAT-ROLLOUT-5 — Catalog workspace published (MEMPHIS): single pin per borough (D4) ──
-// education.cccp:workspace-catalog:0.0.128 — cross-borough source of truth for plugin versions.
+// ── MEM-CAT-ROLLOUT-5 — Catalog workspace served by JitPack (CNV-17) ──
 dependencyResolutionManagement {
     repositories {
-        mavenLocal()
         mavenCentral()
     }
     versionCatalogs {
         create("ws") {
-            from("education.cccp:workspace-catalog:0.0.128")
+            from("com.github.cccp-education.workspace-bom:workspace-catalog:0.0.136")
         }
     }
 }
@@ -22,7 +20,7 @@ pluginManagement.repositories.maven("https://jitpack.io")
 pluginManagement.resolutionStrategy.eachPlugin {
     when {
         requested.id.id.startsWith("education.cccp.build.") ->
-            useModule("com.github.cccp-education.conventions-gradle:conventions-plugin:0.0.16")
+            useModule("com.github.cccp-education.conventions-gradle:conventions-plugin:v0.0.17")
 
         // CNV-16 — bakery 0.0.36 (BKY-CI-MIRROR / pushCiMirror) is served from
         // JitPack (Central quota blocked, Portal not the pilot target).
@@ -32,3 +30,4 @@ pluginManagement.resolutionStrategy.eachPlugin {
 }
 
 rootProject.name = "runner-gradle"
+dependencyResolutionManagement.repositories.maven("https://jitpack.io")
