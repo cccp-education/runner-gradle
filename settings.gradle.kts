@@ -25,7 +25,7 @@ pluginManagement.resolutionStrategy.eachPlugin {
         // CNV-16 — bakery 0.0.36 (BKY-CI-MIRROR / pushCiMirror) is served from
         // JitPack (Central quota blocked, Portal not the pilot target).
         requested.id.id == "education.cccp.bakery" ->
-            useModule("com.github.cccp-education.bakery-gradle:bakery-plugin:0.0.38")
+            useModule("com.github.cccp-education.bakery-gradle:bakery-plugin:0.0.39")
     }
 }
 
