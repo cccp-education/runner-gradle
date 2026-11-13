@@ -238,3 +238,13 @@ Shim `useModule` : `education.cccp.bakery` →
 Le catalog Central 0.0.128 déclare 0.0.33 ; la bakery BKY-CI-MIRROR est servie
 par JitPack (0.0.36→0.0.38). Vérifié `buildEnvironment` → 0.0.38. Rapport
 `.agents/sessions/038-bakery-jitpack-shim.adoc`.
+
+== Session 039 — CNV-17 : JitPack canal unique — 2026-11-13
+
+JitPack devient le **canal unique** des artefacts publics (Central/Portal
+cessent d'être publiés pour `foundry/public/**`). Catalogue `ws` servi par
+JitPack (`workspace-catalog:0.0.136`), plateforme forcée
+`com.github.cccp-education.workspace-bom:workspace-bom:0.0.136`, shim
+`conventions-plugin:0.0.17` + `bakery-plugin:0.0.38`. Runner reste consommateur
+terminal N3 (aucune publication). CI verte ; aucun test local. Rapport
+`.agents/sessions/039-cnv-17-jitpack-channel.adoc`.

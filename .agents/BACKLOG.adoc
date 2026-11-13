@@ -4,7 +4,8 @@
 :toclevels: 3
 :icons: font
 
-_Dernière mise à jour : 2026-11-10 (S-038 — shim JitPack `education.cccp.bakery` → `bakery-plugin 0.0.38`, BKY-CI-MIRROR / `pushCiMirror`.)_
+_Dernière mise à jour : 2026-11-13 (S-039 — CNV-17 JitPack canal unique : catalogue `ws`/plateforme `0.0.136`, shims `conventions-plugin:0.0.17` + `bakery-plugin:0.0.38`. Consommateur terminal, aucune publication.)_
+_Antérieure : 2026-11-10 (S-038 — shim JitPack `education.cccp.bakery` → `bakery-plugin 0.0.38`, BKY-CI-MIRROR / `pushCiMirror`.)_
 
 == 🟡 EPIC RUN-I18N-ARTIFACT — Le rapport de convergence mesure l'artefact (CADRÉ S-077, revue i18n S-263)
 
@@ -60,3 +61,18 @@ bakery, plantuml) et refuse un déploiement non prouvé.
 *Total* : 4 US ~5 pts. *Dépend de* : `cheroliv.com S-077` (✅),
 `GBL-010` G-4 (✅). *Doc* : `.agents/i18n_review.adoc` (S-263),
 `CADRAGE_EPIC_GBL_010_ARBRE_TRADUCTION_SITE.adoc`.
+
+'''
+== Historique — Session 039 — CNV-17 (JitPack canal unique)
+
+* Décision pilote : JitPack = **canal unique** des artefacts publics. Maven
+  Central (nmcp) et le Gradle Plugin Portal ne sont plus publiés pour
+  `foundry/public/**` ; `foundry/private/**` et `office/**` exclus.
+* Catalogue `ws` servi par JitPack
+  (`com.github.cccp-education.workspace-bom:workspace-catalog:0.0.136`),
+  plateforme forcée `workspace-bom:0.0.136`, shims `conventions-plugin:0.0.17`
+  et `bakery-plugin:0.0.38`.
+* Runner = consommateur terminal N3 : aucune publication (JitPack hors canal
+  justifié).
+* `RUN-I18N-ARTIFACT` reste le prochain chantier actionnable (session 040).
+* Rapport : `.agents/sessions/039-cnv-17-jitpack-channel.adoc`

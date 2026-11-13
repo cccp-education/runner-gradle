@@ -5,6 +5,8 @@ _Regles absolues_ : voir `AGENT.adoc`
 _Ontologie spatiale_ : voir `configuration/.agents/AGENT_GOVERNANCE.adoc`
 _DAG_ : N3 — Orchestration (Regle 4bis)
 
+_Derniere mise a jour_ : 2026-11-13 (Session 039 — **CNV-17 : JitPack canal unique**. Catalogue `ws` servi par JitPack (`workspace-catalog:0.0.136`), plateforme forcée `com.github.cccp-education.workspace-bom:workspace-bom:0.0.136`, shim `conventions-plugin:0.0.17` + `bakery-plugin:0.0.38`. Consommateur terminal N3, aucune publication. Rapport `.agents/sessions/039-cnv-17-jitpack-channel.adoc`.)
+
 _Derniere mise a jour_ : 2026-11-10 (Session 038 — shim `useModule` : `education.cccp.bakery` → **JitPack `bakery-plugin 0.0.38`** (BKY-CI-MIRROR / `pushCiMirror`) ; `buildEnvironment` VERT. Rapport `.agents/sessions/038-bakery-jitpack-shim.adoc`.)
 
 _Derniere mise a jour_ : 2026-11-05 (Session 037 — pins `workspace-catalog/BOM` **0.0.125** puis **0.0.128** (bakery 0.0.33, document 0.0.30, plantuml 0.0.16, codebase 0.0.18) ; C6 local 0.0.129 en working tree, reverté avant clôture ; force Saxon 9.9.1-7 conservée. Rapports `.agents/sessions/` + `.agents/SESSIONS_HISTORY.adoc`.)
@@ -12,10 +14,11 @@ _Derniere mise a jour_ : 2026-11-03 (Session 036 — **pins catalog/BOM 0.0.123/
 _Derniere mise a jour (antérieure)_ : 2026-10-25 (Session 035 — **re-pin catalog/BOM 0.0.100 → 0.0.101** (bakery 0.0.28, document 0.0.25) + **CI ressuscitée** : `./gradlew build` sans `-PsiteName` échouait en configuration depuis ≥ 2026-10-11 → JDK 25 + `-PsiteName=ci`. `build -PsiteName=ci` VERT, bake réel cheroliv.com VERT, CI `0bdc5fc` verte. Rapport `.agents/sessions/035-catalog-0.0.101-ci-jdk25.adoc`.)
 _Derniere mise a jour (antérieure)_ : 2026-10-11 (Session 034 — **re-pin catalog 0.0.70 → 0.0.78**). Rollout du catalog MEMPHIS `0.0.78` (plantuml 0.0.9 / document 0.0.24 / bakery 0.0.26 ; jgit 7.8, diagram 3.2.1, langchain4j 1.22, koog 1.3). `settings.gradle.kts` (`workspace-catalog:0.0.70 → 0.0.78`) + `build.gradle.kts` (`force workspace-bom 0.0.70 → 0.0.78`). `./gradlew help` VERT (résolution catalog + bakery 0.0.26 + BOM 0.0.78). Force Saxon 9.9.1-7 conservée.
 _Derniere mise a jour (antérieure)_ : 2026-10-08 (Session 033 — **US-5 PLT-DIAGRAM-OWNERSHIP : force Saxon 9.9.1-7 (fix D1 CHE-DIAGRAM, diagrammes blancs)**). Cause racine prouvée : `net.sf.saxon:Saxon-HE:11.4` (tiré par `document-plugin → epubcheck:5.2.1`) sérialise les SVG PlantUML avec `xmlns=''` + entités hex → rendu blanc. `force("net.sf.saxon:Saxon-HE:9.9.1-7")` dans le buildscript → `xmlns=''` ×0, rendu navigateur σ=8697 (visible) sur les 5 diagrammes de 0125. Reproduit en bake frais (cache `.asciidoctor/` vidé).)
+_Session terminee_ : 039 — CNV-17 JitPack canal unique (documentation).
 _Session terminee_ : 033 — force Saxon 9.9.1-7 (fix D1 CHE-DIAGRAM, SVG blancs).
 _Session terminee_ : 032 — re-pin catalog/BOM 0.0.69 (document 0.0.21, fix D2 PLT-DIAGRAM-OWNERSHIP US-4-C).
 _Session terminee_ : 030 — re-pin catalog 0.0.61 + force BOM 0.0.61 (fix drift cross-borough bakery, maintenu depuis cheroliv S-058).
-_Session a venir_ : 033 — WSM-3 pilot-plugin tests OU EPIC L koog
+_Session a venir_ : 040 — maintenance consommateur terminal (RUN-I18N-ARTIFACT : `reportTranslationArtifact` + gate de déploiement)
 
 '''
 == REGLES ABSOLUES (resume)
@@ -138,3 +141,13 @@ _Session a venir_ : 033 — WSM-3 pilot-plugin tests OU EPIC L koog
 == Session 037 — JitPack mirror (CNV-16)
 
 Aucune publication JitPack (pas de publication Maven) ; settings shim uniquement. JitPack : n/a.
+
+== Session 039 — CNV-17 : JitPack canal unique — 2026-11-13
+
+JitPack devient le canal **unique** des artefacts publics (Central/Portal
+cessent d'être publiés pour `foundry/public/**`). Le catalogue workspace `ws`
+est servi par JitPack (`com.github.cccp-education.workspace-bom:workspace-catalog:0.0.136`),
+la plateforme N0 est forcée sur JitPack (`workspace-bom:0.0.136`), les shims
+résolvent `conventions-plugin:0.0.17` et `bakery-plugin:0.0.38`. Runner reste
+consommateur terminal N3 : aucune publication. CI verte. Rapport
+`.agents/sessions/039-cnv-17-jitpack-channel.adoc`.

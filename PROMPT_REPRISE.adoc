@@ -1,31 +1,42 @@
-= PROMPT_REPRISE — runner-gradle
+= PROMPT_REPRISE — runner-gradle — Session 039 (close) — CNV-17 JitPack canal unique
 :session: 039
-:date: 2026-11-10
-:etat: S-038 — shim `useModule` : `education.cccp.bakery` → JitPack `bakery-plugin 0.0.38` (BKY-CI-MIRROR / pushCiMirror) ; `buildEnvironment` VERT.
-:epic_actif: BKY-SEARCH (consommation N2) + PLT-DIAGRAM-OWNERSHIP — force Saxon 9.9.1-7 conservée.
-:epic_suivant: re-pin `workspace-catalog/BOM 0.0.129` au reset Central (2026-12-01) ; le shim JitPack reste prioritaire pour bakery.
+:date: 2026-11-13
+:etat: TERMINÉE
+:epic_actif: CNV-17 (JitPack canal unique) — clôture documentaire
+:epic_suivant: maintenance consommateur terminal (RUN-I18N-ARTIFACT) — session 040
 
-== Acquis S-038 (2026-11-10)
+== Session 039 terminée — CNV-17 (JitPack canal unique)
 
-* Le catalog Central `0.0.128` déclare `bakery-plugin = 0.0.33`. La bakery
-  `BKY-CI-MIRROR` (tâche `pushCiMirror`) est publiée sur **JitPack** en
-  `0.0.36` → `0.0.37` → **`0.0.38`** (tags CNV-16).
-* `settings.gradle.kts` : `pluginManagement.resolutionStrategy.eachPlugin`
-  redirige `education.cccp.bakery` →
-  `com.github.cccp-education.bakery-gradle:bakery-plugin:0.0.38`, en plus du
-  shim `education.cccp.build.*` (conventions JitPack `0.0.15`).
-* Vérifié : `./gradlew help -PsiteName=cheroliv.com` BUILD SUCCESSFUL ;
-  `buildEnvironment` → `bakery-plugin:0.0.38`.
+Décision pilote : « la totalité vers JitPack ». JitPack est le **canal unique**
+des artefacts publics ; Maven Central (nmcp) et le Gradle Plugin Portal ne sont
+plus publiés pour `foundry/public/**`. Un artefact = un canal = un nom = une
+version. `foundry/private/**` et `office/**` exclus.
 
-== Mission session 039
+* Catalogue workspace `ws` servi par JitPack :
+  `com.github.cccp-education.workspace-bom:workspace-catalog:0.0.136`.
+* Plateforme N0 forcée : `com.github.cccp-education.workspace-bom:workspace-bom:0.0.136`.
+* Shims `useModule` : `conventions-plugin:0.0.17` et `bakery-plugin:0.0.38`.
+* `bakery` vient de `alias(ws.plugins.bakery)` (plus de version en dur).
+* Force Saxon `9.9.1-7` conservée (défense diagrammes blancs).
+* Runner = consommateur terminal N3 : **aucune publication**. CI verte ;
+  aucun test local (Local = Build, Tests = CI). Zéro code Kotlin modifié.
 
-. Au **2026-12-01**, re-pin `workspace-catalog/BOM 0.0.129` (Central) ; ne pas
-   supprimer le shim JitPack tant que la bakery n'est pas sur Central.
-. Vérifier que le déploiement i18n exécute toujours `pagefind validateSearchIndex`.
-. `BKY-PLT-4` (corpus D2) reste côté bakery/metered.
+*Rapport* : `.agents/sessions/039-cnv-17-jitpack-channel.adoc`
+
+== Mission session 040 — maintenance consommateur terminal
+
+. Reprendre `RUN-I18N-ARTIFACT` : `reportTranslationArtifact` (rapport
+   d'artefact mesuré, pas un compteur de store).
+. Gate de déploiement : `deploySite` refuse un défaut d'artefact non documenté.
+. Vérifier que le déploiement i18n exécute toujours
+   `pagefind validateSearchIndex`.
+. Aucune publication : ne pas ajouter `publishToMavenLocal` (N3).
 
 == Rappels
 
-* Local = Build, Tests = CI : `./gradlew tasks`/`buildEnvironment` seulement.
-* Ne pas commiter de pin vers une version non publiée sur Central.
-* Ne pas lire les fichiers gitignorés.
+- Local = Build, Tests = CI : `./gradlew tasks`/`buildEnvironment` seulement
+- Ne pas commiter de pin vers une version non publiée sur JitPack
+- Ne pas lire les fichiers gitignorés
+- `-PsiteName` obligatoire pour les tâches de bake
+- Le shim JitPack `bakery` reste prioritaire tant que la version publiée du
+  catalogue n'est pas alignée
