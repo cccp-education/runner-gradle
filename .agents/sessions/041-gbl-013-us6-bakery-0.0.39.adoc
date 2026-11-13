@@ -1,0 +1,16 @@
+= Session 041 — GBL-013 US-6 : adoption bakery 0.0.39 (actions canoniques)
+:date: 2026-11-14
+:borough: New Jersey (runner-gradle)
+
+== Livré
+
+* Shim `settings.gradle.kts` : `education.cccp.bakery` →
+  `com.github.cccp-education.bakery-gradle:bakery-plugin:0.0.39` (JitPack).
+* Vérification locale `help -PsiteName=ci` VERTE ; aucun code métier modifié.
+* Run CI `43515519584` **VERT** (commit `18b4149`).
+
+== Contexte
+
+`pushCiMirror` injecte désormais les 3 actions canoniques
+`office/.github/actions/` dans le payload du miroir ; les overlays `.ci-mirror`
+ne les dupliquent plus.

@@ -256,3 +256,11 @@ terminal N3 (aucune publication). CI verte ; aucun test local. Rapport
 Run `43501404595` **VERT** (commit `a87f285`). Rapport
 `.agents/sessions/040-gbl-013-wave2.adoc`.
 
+== Session 041 — GBL-013 US-6 : adoption bakery 0.0.39 — 2026-11-14
+
+Shim `settings.gradle.kts` → `com.github.cccp-education.bakery-gradle:bakery-plugin:0.0.39`
+(JitPack) ; `pushCiMirror` injecte désormais les actions canoniques
+`office/.github/actions/`. Run `43515519584` **VERT** (commit `18b4149`).
+Rapport `.agents/sessions/041-gbl-013-us6-bakery-0.0.39.adoc`.
+
+

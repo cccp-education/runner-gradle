@@ -1,7 +1,15 @@
 = PROMPT_REPRISE — runner-gradle
-:session: 041
+:session: 042
 :date: 2026-11-14
-:etat: S-040 (2026-11-14) — **GBL-013 vague 2** : `ci/run.sh` (`build -PsiteName=ci`) + `test.yml` épinglé sur `cccpeducation/cccp-ci-base@sha256:4722c1bc…` ; run `43501404595` VERT. Aucun EPIC ouvert.
+:etat: S-041 (2026-11-14) — **GBL-013 US-6** : shim bakery → JitPack `0.0.39` (actions canoniques injectées par `pushCiMirror`) ; run `43515519584` VERT. Aucun EPIC ouvert.
+
+== Session 041 — GBL-013 US-6 : adoption bakery 0.0.39
+
+* `education.cccp.bakery` → `bakery-plugin:0.0.39` (JitPack).
+* `pushCiMirror` injecte les 3 actions canoniques `office/.github/actions/` ;
+  les overlays `.ci-mirror` ne les dupliquent plus.
+* Run `43515519584` VERT (commit `18b4149`). Rapport
+  `.agents/sessions/041-gbl-013-us6-bakery-0.0.39.adoc`.
 
 == Session 040 — GBL-013 vague 2 : CI sur l'image de runtime
 

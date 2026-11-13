@@ -5,6 +5,8 @@ _Regles absolues_ : voir `AGENT.adoc`
 _Ontologie spatiale_ : voir `configuration/.agents/AGENT_GOVERNANCE.adoc`
 _DAG_ : N3 — Orchestration (Regle 4bis)
 
+_Derniere mise a jour_ : 2026-11-14 (Session 041 — **GBL-013 US-6** ✅ — shim bakery → JitPack `0.0.39` (actions canoniques injectées par `pushCiMirror`) ; run `43515519584` VERT. Rapport `.agents/sessions/041-gbl-013-us6-bakery-0.0.39.adoc`.)
+
 _Derniere mise a jour_ : 2026-11-14 (Session 040 — **GBL-013 vague 2** ✅ — `ci/run.sh` (`build -PsiteName=ci`) + `test.yml` épinglé sur `cccpeducation/cccp-ci-base@sha256:4722c1bc…` ; run `43501404595` VERT. Rapport `.agents/sessions/040-gbl-013-wave2.adoc`.)
 
 _Derniere mise a jour_ : 2026-11-13 (Session 039 — **CNV-17 : JitPack canal unique**. Catalogue `ws` servi par JitPack (`workspace-catalog:0.0.136`), plateforme forcée `com.github.cccp-education.workspace-bom:workspace-bom:0.0.136`, shim `conventions-plugin:0.0.17` + `bakery-plugin:0.0.38`. Consommateur terminal N3, aucune publication. Rapport `.agents/sessions/039-cnv-17-jitpack-channel.adoc`.)
