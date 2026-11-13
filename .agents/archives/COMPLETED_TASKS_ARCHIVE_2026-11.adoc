@@ -21,3 +21,11 @@
   (BKY-CI-MIRROR / `pushCiMirror`).
 * `buildEnvironment` → 0.0.38 ; `help -PsiteName=cheroliv.com` VERT.
 * Rapport `.agents/sessions/038-bakery-jitpack-shim.adoc`.
+
+== S-040 — GBL-013 vague 2 : CI sur l'image de runtime ✅
+
+* `ci/run.sh` (`build -PsiteName=ci`) + `test.yml` épinglé sur
+  `cccpeducation/cccp-ci-base@sha256:4722c1bc…` ; `setup-java` supprimé.
+* Run `43501404595` VERT (commit `a87f285`).
+* Rapport `.agents/sessions/040-gbl-013-wave2.adoc`.
+

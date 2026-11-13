@@ -248,3 +248,11 @@ JitPack (`workspace-catalog:0.0.136`), plateforme forcée
 `conventions-plugin:0.0.17` + `bakery-plugin:0.0.38`. Runner reste consommateur
 terminal N3 (aucune publication). CI verte ; aucun test local. Rapport
 `.agents/sessions/039-cnv-17-jitpack-channel.adoc`.
+
+== Session 040 — GBL-013 vague 2 : gate CI sur l'image de runtime — 2026-11-14
+
+`ci/run.sh` (`fast`/`test` = `build -PsiteName=ci`) et `test.yml` épinglé sur
+`cccpeducation/cccp-ci-base@sha256:4722c1bc…` ; `setup-java` supprimé.
+Run `43501404595` **VERT** (commit `a87f285`). Rapport
+`.agents/sessions/040-gbl-013-wave2.adoc`.
+

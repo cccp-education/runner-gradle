@@ -1,10 +1,16 @@
 = PROMPT_REPRISE — runner-gradle
-:session: 037
-:date: 2026-10-31
-:etat: S-036 (2026-10-31) — pin catalog/BOM **0.0.111** : résout bakery **0.0.30** + document **0.0.26** + plantuml **0.0.14** + i18n-contracts **0.0.5** (vérifié `buildEnvironment -PsiteName=cheroliv.com`). Le pin 0.0.109 ne portait que bakery à jour ; toute la chaîne i18n était derrière.
-:epic_actif: PLT-DIAGRAM-OWNERSHIP (force Saxon conservée) — next = porter le fix Saxon dans bakery OU WSM-3 pilot-plugin tests
+:session: 041
+:date: 2026-11-14
+:etat: S-040 (2026-11-14) — **GBL-013 vague 2** : `ci/run.sh` (`build -PsiteName=ci`) + `test.yml` épinglé sur `cccpeducation/cccp-ci-base@sha256:4722c1bc…` ; run `43501404595` VERT. Aucun EPIC ouvert.
 
-== Session 035 — catalog/BOM 0.0.101 + CI ressuscitée
+== Session 040 — GBL-013 vague 2 : CI sur l'image de runtime
+
+* `ci/run.sh` (`fast`/`test` = `./gradlew build -PsiteName=ci`).
+* Adapter : `container:` épinglé, `setup-java` supprimé, `ci/run.sh test`.
+* Run `43501404595` VERT (commit `a87f285`). Rapport
+  `.agents/sessions/040-gbl-013-wave2.adoc`.
+
+== Session 036 — pin catalog/BOM 0.0.111 + CI ressuscitée
 
 **Deux re-pins** (suite des releases amont) : `0.0.100` = bakery 0.0.27
 (document 0.0.24, plantuml 0.0.10, codebase 0.0.18) puis `0.0.101` = document
